@@ -227,16 +227,15 @@ var/world_topic_spam_protect_time = world.timeofday
 /world/proc/update_status()
 	//Note: Hub content is limited to 254 characters, including limited HTML/CSS.
 	var/s = ""
-
 	if(CONFIG_GET(string/servername))
 		s += "<a href=\"[CONFIG_GET(string/forumurl)]\"><b>[CONFIG_GET(string/servername)]</b></a>"
-
+	s += "Русский сервер на билде 'CM13'"
 	if(SSmapping?.configs)
 		var/datum/map_config/MG = SSmapping.configs[GROUND_MAP]
-		s += "<br>Map: [MG?.map_name ? "<b>[MG.map_name]</b>" : ""]"
+		s += "<br>Карта: [MG?.map_name ? "<b>[MG.map_name]</b>" : ""]"
 	if(SSticker?.mode)
-		s += "<br>Mode: <b>[SSticker.mode.name]</b>"
-		s += "<br>Round time: <b>[duration2text()]</b>"
+		s += "<br>Режим: <b>[SSticker.mode.name]</b>"
+		s += "<br>Время: <b>[duration2text()]</b>"
 
 	world.status = s
 
