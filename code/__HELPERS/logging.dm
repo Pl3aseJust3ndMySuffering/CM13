@@ -214,3 +214,33 @@ GLOBAL_PROTECT(config_error_log)
 
 /proc/log_admin_private(text)
 	log_admin(text)
+
+/proc/log_error(text)
+	to_world_log(text)
+	error_log << "\[[time_stamp()]]RUNTIME: [text][log_end]"
+
+/datum/proc/log_info_line()
+	return "[src] ([type])"
+
+/atom/log_info_line()
+	var/turf/t = get_turf(src)
+	if(istype(t))
+		return "([t]) ([t.x],[t.y],[t.z]) ([t.type])"
+	else if(loc)
+		return "([loc]) (0,0,0) ([loc.type])"
+	else
+		return "(NULL) (0,0,0) (NULL)"
+
+/mob/log_info_line()
+	return "[..()] ([ckey])"
+
+/proc/log_info_line(var/datum/d)
+	if(!istype(d))
+		return
+	return d.log_info_line()
+
+/mob/proc/simple_info_line()
+	return "[key_name(src)] ([x],[y],[z])"
+
+/client/proc/simple_info_line()
+	return "[key_name(src)] ([mob.x],[mob.y],[mob.z])"

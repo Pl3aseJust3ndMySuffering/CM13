@@ -42,7 +42,7 @@ var/list/paper_tag_whitelist = list("center","p","div","span","h1","h2","h3","h4
 	"table","td","th","tr")
 
 ///////////////
-
+var/error_log			= null
 var/diary = null
 var/round_stats = null
 var/round_scheduler_stats = null

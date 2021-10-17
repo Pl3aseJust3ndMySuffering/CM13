@@ -50,6 +50,7 @@
 
 #define SS_INIT_TICKER_SPAWN       999
 #define SS_INIT_INPUT              85
+#define INIT_ORDER_WEBHOOKS		50
 #define SS_INIT_RUST               26
 #define SS_INIT_SUPPLY_SHUTTLE     25
 #define SS_INIT_GARBAGE            24

@@ -264,3 +264,14 @@
 		else //regex everything else (works for /proc too)
 			return lowertext(replacetext("[the_type]", "[type2parent(the_type)]/", ""))
 
+/proc/safe_file2text(filename, error_on_invalid_return = TRUE)
+	try
+		if(fexists(filename))
+			. = file2text(filename)
+			if(!. && error_on_invalid_return)
+				error("File empty ([filename])")
+		else if(error_on_invalid_return)
+			error("File not found ([filename])")
+	catch(var/exception/E)
+		if(error_on_invalid_return)
+			error("Exception when loading file as string: [E]")

@@ -298,3 +298,14 @@ proc/setup_database_connection()
 /world/proc/incrementMaxZ()
 	maxz++
 	//SSmobs.MaxZChanged()
+
+/proc/get_world_url()
+	. = "byond://"
+	if(config.serverurl)
+		. += config.serverurl
+	else if(config.server)
+		. += config.server
+	else
+		. += "[world.address]:[world.port]"
+
+var/global/game_id = null

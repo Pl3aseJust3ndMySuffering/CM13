@@ -195,7 +195,7 @@
 	for(var/i = 1, i <= length(text), i++)
 		var/a = text2ascii(text, i)
 		if (a == 1105 || a == 1025)
-			t += ascii2text(1025
+			t += ascii2text(1025)
 			continue
 		if (a < 1072 || a > 1105)
 			t += ascii2text(a)

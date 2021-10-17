@@ -61,6 +61,13 @@ SUBSYSTEM_DEF(ticker)
 	var/key = SAFEPICK(all_music)
 	if(key)
 		login_music = file(all_music[key])
+	SSwebhooks.send(
+		WEBHOOK_ROUNDPREP,
+		list(
+			"map" = SSmapping.configs[GROUND_MAP].map_name,
+			"url" = get_world_url()
+		)
+	)
 	return ..()
 
 /datum/controller/subsystem/ticker/fire(resumed = FALSE)

@@ -343,6 +343,13 @@
 	declare_completion_announce_predators()
 	declare_completion_announce_medal_awards()
 	declare_random_fact()
+	SSwebhooks.send(
+		WEBHOOK_ROUNDEND,
+		list(
+			"ghosts" = rand(5,10), //TEMPORARY
+			"clients" = GLOB.clients.len
+		)
+	)
 
 	return 1
 

@@ -1856,3 +1856,6 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 	json_file = file2text(json_file)
 	json_file = json_decode(json_file)
 	return json_file
+
+/proc/crash_with(msg)
+	CRASH(msg)
