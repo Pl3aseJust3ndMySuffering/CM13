@@ -56,7 +56,7 @@
 	name = SQUAD_NAME_1
 	color = 1
 	access = list(ACCESS_MARINE_ALPHA)
-	usable = TRUE
+	usable = FALSE
 	radio_freq = ALPHA_FREQ
 
 /datum/squad/bravo
@@ -77,7 +77,7 @@
 	name = SQUAD_NAME_4
 	color = 4
 	access = list(ACCESS_MARINE_DELTA)
-	usable = TRUE
+	usable = FALSE
 	radio_freq = DELTA_FREQ
 
 /datum/squad/echo
