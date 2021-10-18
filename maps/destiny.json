@@ -1,0 +1,6 @@
+{
+    "map_name": "USS Destiny",
+    "map_path": "map_files/USS_Destiny",
+    "map_file": "USS_Destiny.dmm",
+    "traits": [{"Marine Main Ship": true}]
+}
