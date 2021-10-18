@@ -1,4 +1,3 @@
-
 /*Access levels. Changed into defines, since that's what they should be.
 It's best not to mess with the numbers of the regular access levels because
 most of them are tied into map-placed objects. This should be reworked in the future.*/
@@ -18,10 +17,10 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_MARINE_SPECPREP 		13
 #define ACCESS_MARINE_SMARTPREP		14
 
-#define ACCESS_MARINE_ALPHA 		15
-#define ACCESS_MARINE_BRAVO 		16
-#define ACCESS_MARINE_CHARLIE 		17
-#define ACCESS_MARINE_DELTA 		18
+#define ACCESS_MARINE_ALPHA 		15 21
+#define ACCESS_MARINE_BRAVO 		16 21
+#define ACCESS_MARINE_CHARLIE 		17 21
+#define ACCESS_MARINE_DELTA 		18 21
 
 #define ACCESS_MARINE_BRIDGE 		19
 #define ACCESS_MARINE_CHEMISTRY 	20
