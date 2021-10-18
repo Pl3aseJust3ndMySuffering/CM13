@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(webhooks)
 /datum/controller/subsystem/webhooks/proc/load_webhooks()
 
 	if(!fexists(HTTP_POST_DLL_LOCATION))
-		to_world_log("Unable to locate HTTP POST lib at [HTTP_POST_DLL_LOCATION], webhooks will not function on this run.")
+		log_debug("Unable to locate HTTP POST lib at [HTTP_POST_DLL_LOCATION], webhooks will not function on this run.")
 		return
 
 	var/list/all_webhooks_by_id = list()
@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(webhooks)
 			var/list/wmention = webhook_data["mentions"]
 			if(wmention && !islist(wmention))
 				wmention = list(wmention)
-			to_world_log("Setting up webhook [wid].")
+			log_debug("Setting up webhook [wid].")
 			if(wid && wurl && all_webhooks_by_id[wid])
 				var/decl/webhook/webhook = all_webhooks_by_id[wid]
 				webhook.urls = islist(wurl) ? wurl : list(wurl)
@@ -42,9 +42,9 @@ SUBSYSTEM_DEF(webhooks)
 				if(wmention)
 					webhook.mentions = wmention?.Copy()
 				webhook_decls[wid] = webhook
-				to_world_log("Webhook [wid] ready.")
+				log_debug("Webhook [wid] ready.")
 			else
-				to_world_log("Failed to set up webhook [wid].")
+				log_debug("Failed to set up webhook [wid].")
 
 /datum/controller/subsystem/webhooks/proc/send(var/wid, var/wdata)
 	var/decl/webhook/webhook = webhook_decls[wid]

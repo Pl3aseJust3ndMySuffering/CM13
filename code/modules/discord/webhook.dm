@@ -8,10 +8,11 @@
 
 /decl/webhook/proc/http_post(var/target_url, var/payload)
 	if (!target_url)
+		log_debug("No webhook target url")
 		return -1
 
 	var/result = call(HTTP_POST_DLL_LOCATION, "send_post_request")(target_url, payload, json_encode(list("Content-Type" = "application/json")))
-
+	//var/result = shell(curl --header "Content-Type: application/json" -d payload target_url)
 	result = cached_json_decode(result)
 	if (result["error_code"])
 		log_debug("byhttp error: [result["error"]] ([result["error_code"]])")
