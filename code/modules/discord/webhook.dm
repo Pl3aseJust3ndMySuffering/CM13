@@ -11,8 +11,13 @@
 		log_debug("No webhook target url")
 		return -1
 
-	var/result = call(HTTP_POST_DLL_LOCATION, "send_post_request")(target_url, payload, json_encode(list("Content-Type" = "application/json")))
-	//var/result = shell(curl --header "Content-Type: application/json" -d payload target_url)
+	//var/result = call(HTTP_POST_DLL_LOCATION, "send_post_request")(target_url, payload, json_encode(list("Content-Type" = "application/json")))
+	var/hook = "curl -H \"Content-Type:application/json\" -X POST "
+	hook += "--data \"{\\\"content\\\": \\\"[payload]\\\"}\" "
+	hook += "[target_url]"
+	var/result = shell(hook)
+	log_debug("Hook sent: [hook]")
+    
 	result = cached_json_decode(result)
 	if (result["error_code"])
 		log_debug("byhttp error: [result["error"]] ([result["error_code"]])")
