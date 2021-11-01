@@ -927,6 +927,14 @@
 	effective_range_max = 7
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 
+/datum/ammo/bullet/rifle/holo_target
+	name = "holo-targeting rifle bullet"
+	damage = 30
+
+/datum/ammo/bullet/rifle/holo_target/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/bonus_damage_stack, 10, world.time)
+
 /datum/ammo/bullet/rifle/explosive
 	name = "explosive rifle bullet"
 
@@ -1116,7 +1124,7 @@
 	handful_state = "beanbag_slug"
 	icon_state = "beanbag"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
-	sound_override = 'sound/weapons/gun_shotgun_small.ogg'
+	sound_override = 'sound/weapons/gun_shotgun_riot.ogg'
 
 	max_range = 12
 	shrapnel_chance = 0
@@ -1320,6 +1328,7 @@
 	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 	handful_state = "heavy_beanbag"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
+	sound_override = 'sound/weapons/gun_shotgun_riot.ogg'
 
 	max_range = 7
 	shrapnel_chance = 0
@@ -1965,6 +1974,11 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		H.disable_special_items() // Disables scout cloak
+
+/datum/ammo/energy/taser/precise
+	name = "precise taser bolt"
+	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST|AMMO_MP
+
 
 /datum/ammo/energy/yautja/
 	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
@@ -2824,6 +2838,8 @@
 	max_range = 14
 	shell_speed = AMMO_SPEED_TIER_3
 
+	var/flare_type = /obj/item/device/flashlight/flare/on/gun
+
 /datum/ammo/flare/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
@@ -2831,23 +2847,32 @@
 	))
 
 /datum/ammo/flare/on_hit_mob(mob/M,obj/item/projectile/P)
-	drop_flare(get_turf(P))
+	drop_flare(get_turf(P), P.firer)
 
 /datum/ammo/flare/on_hit_obj(obj/O,obj/item/projectile/P)
-	drop_flare(get_turf(P))
+	drop_flare(get_turf(P), P.firer)
 
 /datum/ammo/flare/on_hit_turf(turf/T, obj/item/projectile/P)
 	if(T.density && isturf(P.loc))
-		drop_flare(P.loc)
+		drop_flare(P.loc, P.firer)
 	else
-		drop_flare(T)
+		drop_flare(T, P.firer)
 
 /datum/ammo/flare/do_at_max_range(obj/item/projectile/P)
-	drop_flare(get_turf(P))
+	drop_flare(get_turf(P), P.firer)
 
-/datum/ammo/flare/proc/drop_flare(var/turf/T)
-	var/obj/item/device/flashlight/flare/on/G = new (T)
+/datum/ammo/flare/proc/drop_flare(var/turf/T, var/mob/firer)
+	var/obj/item/device/flashlight/flare/G = new flare_type(T)
 	G.visible_message(SPAN_WARNING("\A [G] bursts into brilliant light nearby!"))
+	return G
+
+/datum/ammo/flare/signal
+	name = "signal flare"
+	flare_type = /obj/item/device/flashlight/flare/signal/gun
+
+/datum/ammo/flare/signal/drop_flare(turf/T, mob/firer)
+	var/obj/item/device/flashlight/flare/signal/gun/G = ..()
+	G.activate_signal(firer)
 
 /datum/ammo/souto
 	name = "Souto Can"

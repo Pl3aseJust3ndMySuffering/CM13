@@ -168,6 +168,7 @@
 	var/explosivearmor_modifier = 0
 	var/plasmapool_modifier = 1
 	var/plasmagain_modifier = 0
+	var/tackle_chance_modifier = 0
 	var/regeneration_multiplier = 1
 	var/speed_modifier = 0
 	var/phero_modifier = 0
@@ -521,6 +522,12 @@
 	if(isXeno(user) && caste && caste.caste_desc)
 		to_chat(user, caste.caste_desc)
 
+	if(l_hand)
+		to_chat(user, "It's holding[l_hand.get_examine_line()] in its left hand.")
+
+	if(r_hand)
+		to_chat(user, "It's holding[r_hand.get_examine_line()] in its right hand.")
+
 	if(stat == DEAD)
 		to_chat(user, "It is DEAD. Kicked the bucket. Off to that great hive in the sky.")
 	else if(stat == UNCONSCIOUS)
@@ -743,7 +750,7 @@
 /mob/living/carbon/Xenomorph/proc/recalculate_tackle()
 	tackle_min = caste.tackle_min
 	tackle_max = caste.tackle_max
-	tackle_chance = caste.tackle_chance
+	tackle_chance = caste.tackle_chance + tackle_chance_modifier
 	tacklestrength_min = caste.tacklestrength_min + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
 	tacklestrength_max = caste.tacklestrength_max + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
 

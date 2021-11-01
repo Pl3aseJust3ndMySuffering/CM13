@@ -293,7 +293,7 @@
 					total_matching_catalysts++
 
 				if(isliving(my_atom) && !C.mob_react) //Makes it so some chemical reactions don't occur in mobs
-					return
+					continue
 
 				if(!C.required_container)
 					matching_container = 1
@@ -565,6 +565,8 @@
 //////////////////////////////EXPLOSIONS AND FIRE//////////////////////////////
 
 /datum/reagents/proc/handle_volatiles()
+	if(isliving(my_atom))
+		return
 	var/turf/sourceturf = get_turf(my_atom)
 	//For explosion
 	var/ex_power = 0

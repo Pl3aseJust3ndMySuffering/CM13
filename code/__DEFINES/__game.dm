@@ -6,7 +6,6 @@
 
 //Admin perms are in global.dm.
 
-#define DEBUG 0
 #define NO_FLAGS 0 // To make it even more clear that something is a bitfield
 
 #define GLOBAL_PROC		"magic BS"
@@ -36,6 +35,7 @@
 #define MAP_CORSAT "CORSAT" // Highpop only
 #define MAP_KUTJEVO "Kutjevo Refinery"
 #define MAP_ICE_COLONY_V3 "Shivas Snowball" //Ice Rework, low pop enabled.
+#define MAP_HAUNTED_HOUSE_V2 "Haunted House V2"
 
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130 // number of players before we switch to lowpop maps only (LV, BR, Prison)
 
@@ -171,11 +171,12 @@
 #define SEC_LEVEL_DELTA	3
 
 //Alarm levels.
-#define ALARM_WARNING_FIRE 	1
-#define ALARM_WARNING_ATMOS	2
-#define ALARM_WARNING_EVAC	4
-#define ALARM_WARNING_READY	8
-#define ALARM_WARNING_DOWN	16
+#define ALARM_WARNING_FIRE 	(1<<0)
+#define ALARM_WARNING_ATMOS	(1<<1)
+#define ALARM_WARNING_EVAC	(1<<2)
+#define ALARM_WARNING_READY	(1<<3)
+#define ALARM_WARNING_DOWN	(1<<4)
+#define ALARM_LOCKDOWN		(1<<5)
 
 //some arbitrary defines to be used by self-pruning global lists. (see master_controller)
 #define PROCESS_KILL 26	//Used to trigger removal from a processing list
