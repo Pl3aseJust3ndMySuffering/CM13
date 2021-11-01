@@ -1,5 +1,4 @@
 
-
 //-----USS Almayer Walls ---//
 
 /turf/closed/wall/almayer
@@ -238,6 +237,7 @@
 /turf/closed/wall/indestructible/splashscreen
 	name = "Lobby Art"
 	desc = "Assorted artworks."
+	icon = 'icons/customs/lobby/title.dmi'
 	icon_state = ""
 //	icon_state = "title_holiday"
 	layer = FLY_LAYER
@@ -245,7 +245,6 @@
 
 /turf/closed/wall/indestructible/splashscreen/Initialize()
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/lobby_art))
 	tag = "LOBBYART"
 
 /proc/force_lobby_art(art_id)
