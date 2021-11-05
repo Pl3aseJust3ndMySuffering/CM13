@@ -26,18 +26,11 @@
 		overlays_standing[cache_index] = null
 
 /mob/living/carbon/Xenomorph/proc/update_icon_source()
-	if(HAS_TRAIT(src, TRAIT_XENONID))
-		icon = icon_xenonid
-		if(isXenoQueen(src))
-			var/mob/living/carbon/Xenomorph/Queen/Q = src
-			Q.queen_standing_icon = icon_xenonid
-			Q.queen_ovipositor_icon = 'icons/mob/xenonids/ovipositor.dmi'
-	else
-		icon = icon_xeno
-		if(isXenoQueen(src))
-			var/mob/living/carbon/Xenomorph/Queen/Q = src
-			Q.queen_standing_icon = icon_xeno
-			Q.queen_ovipositor_icon = get_icon_from_source(CONFIG_GET(string/alien_queen_ovipositor))
+	icon = icon_xeno
+	if(isXenoQueen(src))
+		var/mob/living/carbon/Xenomorph/Queen/Q = src
+		Q.queen_standing_icon = icon_xeno
+		Q.queen_ovipositor_icon = get_icon_from_source(CONFIG_GET(string/alien_queen_ovipositor))
 
 	update_icons()
 
