@@ -23,7 +23,7 @@
 		return
 
 	client.playtitlemusic()
-
+	client.change_view(lobby_view_size)
 	// Credit the lobby art author
 	if(displayed_lobby_art != -1)
 		var/list/lobby_authors = CONFIG_GET(str_list/lobby_art_authors)
