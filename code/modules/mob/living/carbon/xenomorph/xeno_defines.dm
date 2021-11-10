@@ -1,4 +1,3 @@
-
 // Actual caste datum basedef
 /datum/caste_datum
 	var/caste_type = ""
@@ -851,8 +850,6 @@
 	prefix = "Mutated "
 	color = "#6abd99"
 	ui_color = "#6abd99"
-
-	hive_inherant_traits = list(TRAIT_XENONID)
 
 /datum/hive_status/corrupted/tamed
 	name = "Tamed Hive"
