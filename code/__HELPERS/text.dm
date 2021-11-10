@@ -354,9 +354,4 @@ proc/strip_improper(input_text)
 	for (var/ref in urls)
 		message = replacetextEx_char(message, ref, urls[ref])
 
-<<<<<<< HEAD
 	return message
-=======
-	return message
-
->>>>>>> 3dcfd7ae7933a50617e200855a24ced43924981f
