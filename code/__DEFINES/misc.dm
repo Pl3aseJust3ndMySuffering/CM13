@@ -213,6 +213,7 @@
 #define LUMA_G 0.715
 #define LUMA_B 0.072
 
+<<<<<<< HEAD
 #ifndef WINDOWS_HTTP_POST_DLL_LOCATION
 #define WINDOWS_HTTP_POST_DLL_LOCATION "lib/byhttp.dll"
 #endif
@@ -229,3 +230,6 @@
 #define COLOR_WEBHOOK_GOOD		0x2ECC71 // "#2ECC71"
 #define COLOR_WEBHOOK_POOR		0xE67E22 // "#E67E22"
 #define COLOR_WEBHOOK_BAD		0xE74C3C // "#E74C3C"
+
+//Automatic punctuation
+#define ENDING_PUNCT list(".", "-", "?", "!")
