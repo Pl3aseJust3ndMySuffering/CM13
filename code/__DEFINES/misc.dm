@@ -213,7 +213,6 @@
 #define LUMA_G 0.715
 #define LUMA_B 0.072
 
-<<<<<<< HEAD
 #ifndef WINDOWS_HTTP_POST_DLL_LOCATION
 #define WINDOWS_HTTP_POST_DLL_LOCATION "lib/byhttp.dll"
 #endif
