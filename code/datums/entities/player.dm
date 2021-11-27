@@ -45,8 +45,6 @@
 	var/list/playtime_data // For the NanoUI menu
 	var/client/owning_client
 
-BSQL_PROTECT_DATUM(/datum/entity/player)
-
 /datum/entity_meta/player
 	entity_type = /datum/entity/player
 	table_name = "players"

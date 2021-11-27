@@ -15,8 +15,6 @@
 
     real_time_recorded = world.realtime
 
-BSQL_PROTECT_DATUM(/datum/entity/player_time_log)
-
 /datum/entity_meta/player_time_log
     entity_type = /datum/entity/player_time_log
     table_name = "log_player_playtime"

@@ -7,8 +7,6 @@
     var/bgcolor = "#4a4a4a"
     var/textcolor = "#ffffff"
 
-BSQL_PROTECT_DATUM(/datum/entity/player_time)
-
 /datum/entity_meta/player_time
     entity_type = /datum/entity/player_time
     table_name = "player_playtime"
