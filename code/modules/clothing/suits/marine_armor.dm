@@ -99,11 +99,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/attachable/bayonet,
 		/obj/item/storage/sparepouch,
 		/obj/item/storage/large_holster/machete,
-		/obj/item/storage/belt/gun/m4a3,
-		/obj/item/storage/belt/gun/m44,
-		/obj/item/storage/belt/gun/smartpistol,
-		/obj/item/storage/belt/gun/flaregun,
 		/obj/item/device/motiondetector,
+		/obj/item/storage/belt,
 		/obj/item/device/walkman
 	)
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL)
