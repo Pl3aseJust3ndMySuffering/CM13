@@ -48,7 +48,8 @@ var/internal_tick_usage = 0
 	loadShuttleInfoDatums()
 	populate_gear_list()
 	initialize_global_regex()
-
+	TgsNew()
+	TgsInitializationComplete()
 	//Emergency Fix
 	//end-emergency fix
 
@@ -114,6 +115,7 @@ var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday
 
 /world/Topic(T, addr, master, key)
+	TGS_TOPIC
 	if (T == "ping")
 		var/x = 1
 		for (var/client/C)
@@ -183,6 +185,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		return dat
 
 /world/Reboot(var/reason)
+	TgsReboot()
 	Master.Shutdown()
 
 	var/server = CONFIG_GET(string/server)
