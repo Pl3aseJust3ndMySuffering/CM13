@@ -19,10 +19,10 @@
 #define TGS_DEFINE_AND_SET_GLOBAL(Name, Value) var/global/##Name = ##Value
 
 /// Read the value in the global variable `Name`.
-#define TGS_READ_GLOBAL(Name) GLOB.##Name
+#define TGS_READ_GLOBAL(Name) global.##Name
 
 /// Set the value in the global variable `Name` to `Value`.
-#define TGS_WRITE_GLOBAL(Name, Value) GLOB.##Name = ##Value
+#define TGS_WRITE_GLOBAL(Name, Value) global.##Name = ##Value
 
 /// Disallow ANYONE from reflecting a given `path`, security measure to prevent in-game use of DD -> TGS capabilities.
 #define TGS_PROTECT_DATUM(Path)
