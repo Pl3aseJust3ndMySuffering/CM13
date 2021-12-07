@@ -136,7 +136,7 @@ var/global/list/ahelp_msgs = list()
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/add_verb, src, /client/verb/adminhelp), 2 MINUTES)
 
 	log_admin("HELP: [key_name(src)]: [original_msg] - heard by [admins_non_afk] non-AFK staff.")
-
+	shell("./discord.sh --text \"AHELP: [key_name(src)]: [original_msg]\")
 	unansweredAhelps["[src.computer_id]"] = msg //We are gonna do it by CID, since any other way really gets fucked over by ghosting etc
 
 	return
