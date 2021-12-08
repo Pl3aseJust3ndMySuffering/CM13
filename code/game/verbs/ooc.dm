@@ -47,7 +47,7 @@
 			return
 
 	log_ooc("[mob.name]/[key] : [msg]")
-	shell("./discord.sh --text \"[key]: [msg]\"")
+	shell("./discord.sh --text \"OOC: [key]: [msg]\"")
 	GLOB.STUI.ooc.Add("\[[time_stamp()]] <font color='#display_colour'>OOC: [mob.name]/[key]: [msg]</font><br>")
 	GLOB.STUI.processing |= STUI_LOG_OOC_CHAT
 
