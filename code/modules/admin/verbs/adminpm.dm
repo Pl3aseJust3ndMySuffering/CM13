@@ -93,6 +93,7 @@
 		window_flash(C)
 
 	log_admin("PM: [key_name(src)]->[key_name(C)]: [msg]")
+	shell("./discord.sh --text \"PM: [key_name(src)]->[key_name(C)]: [msg]\"")
 	GLOB.STUI.staff.Add("PM: [key_name(src)]->[key_name(C)]: [msg]<br>")
 	GLOB.STUI.processing |= STUI_LOG_STAFF_CHAT
 	//we don't use message_admins here because the sender/receiver might get it too
