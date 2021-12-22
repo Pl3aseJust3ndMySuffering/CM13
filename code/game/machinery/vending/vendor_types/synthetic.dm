@@ -275,3 +275,71 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
         /obj/item/ammo_magazine/smg/nailgun,
         /obj/item/ammo_magazine/smg/nailgun,
     )
+
+
+
+/////////////////////////////////////////////////
+////////////////////////////////////////////////
+///////////////////////////////////////////////
+//////////////////////////////////////////////
+
+
+//------------RND VENDOR---------------
+/obj/structure/machinery/cm_vending/own_points/rnd_vendor
+	name = "\improper RnD Vendor"
+	desc = "A smaller vendor hooked up to a special carrgo of specially provisioned, experimental tools and equipment made by Rnd. Handle with care."
+	icon_state = "robotics"
+	available_points = 0
+	available_points_to_display = 0
+	vendor_theme = VENDOR_THEME_COMPANY
+	//req_access = list(ACCESS_MARINE_COMMANDER) ACCESS_MARINE
+	//vendor_role = list(JOB_SYNTH)
+
+/obj/structure/machinery/cm_vending/own_points/rnd_vendor
+	listed_products = list(
+		list("ANALYZER", 0, null, null, null),
+		list("Analyzer", 0, /obj/item/device/bioanalyzer,MARINE_CAN_BUY_SCANNER,VENDOR_ITEM_MANDATORY),
+
+		list("WEAPONS", 0, null, null, null),
+		list("Breaching Hammer", 250, /obj/item/weapon/melee/twohanded/breacher, null, VENDOR_ITEM_REGULAR),
+		list("Telescopic Baton", 75, /obj/item/weapon/melee/telebaton, null, VENDOR_ITEM_REGULAR),
+		list("M41A/2", 250, /obj/item/weapon/gun/rifle/m41a/elite, null, VENDOR_ITEM_RECOMMENDED),
+		list("M39/2", 250, /obj/item/weapon/gun/smg/m39/elite, null, VENDOR_ITEM_REGULAR),
+
+		list("STIMULANTS", 0, null, null, null),
+		list("Emergency Autoinjector", 50, /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless, null, VENDOR_ITEM_REGULAR),
+		list("Redemption Stimulant", 250, /obj/item/storage/pouch/stimulant_injector/redemption, null, VENDOR_ITEM_RECOMMENDED),
+		list("Brain Stimulant", 250, /obj/item/storage/pouch/stimulant_injector/brain, null, VENDOR_ITEM_REGULAR),
+		list("Speed Stimulant", 250, /obj/item/storage/pouch/stimulant_injector/speed, null, VENDOR_ITEM_REGULAR),
+
+		list("MEDICAL", 0, null, null, null),
+		list("Upgraded trauma Kit", 50, /obj/item/stack/medical/advanced/bruise_pack/upgraded, null, VENDOR_ITEM_REGULAR),
+		list("Upgraded burn Kit", 50, /obj/item/stack/medical/advanced/ointment/upgraded, null, VENDOR_ITEM_REGULAR),
+		list("Nanosplints", 75, /obj/item/stack/medical/splint/nano, null, VENDOR_ITEM_REGULAR),
+		list("Upgraded Defibrillator", 50, /obj/item/device/defibrillator/upgraded, null, VENDOR_ITEM_RECOMMENDED),
+		list("Incision Management System", 50, /obj/item/tool/surgery/scalpel/manager, null, VENDOR_ITEM_REGULAR),
+
+		list("IMPLANTS", 0, null, null, null),
+		list("Nightvision Implant", 100, /obj/item/device/implanter/nvg, null, VENDOR_ITEM_REGULAR),
+		list("Rejuvenation Implant", 100, /obj/item/device/implanter/rejuv, null, VENDOR_ITEM_REGULAR),
+		list("Agility Implant", 100, /obj/item/device/implanter/agility, null, VENDOR_ITEM_REGULAR),
+		list("Subdermal Armor", 100, /obj/item/device/implanter/subdermal_armor, null, VENDOR_ITEM_RECOMMENDED),
+
+		list("EQUIPMENT", 0, null, null, null),
+		list("Crew Monitor", 75, /obj/item/tool/crew_monitor, null, VENDOR_ITEM_REGULAR),
+		list("Resined boots", 250, /obj/item/clothing/shoes/marine/advanced, null, VENDOR_ITEM_RECOMMENDED),
+		list("M4RA Battle sight", 300, /obj/item/clothing/glasses/night/M4RA, null, VENDOR_ITEM_RECOMMENDED),
+
+		list("AMMUNITION", 0, null, null, null),
+		list("Incendiary Buckshot Kit", 200, /obj/item/storage/box/shotgun/buckshot, null, VENDOR_ITEM_RECOMMENDED),
+		list("Incendiary Slug Kit", 150, /obj/item/storage/box/shotgun/slug, null, VENDOR_ITEM_REGULAR),
+		list("Incendiary Ammo Kit", 200, /obj/item/ammo_kit/incendiary, null, VENDOR_ITEM_RECOMMENDED),
+		list("Cluster Ammo Kit", 150, /obj/item/ammo_kit/cluster, null, VENDOR_ITEM_REGULAR),
+		list("Toxin Ammo Kit", 150, /obj/item/ammo_kit/toxin, null, VENDOR_ITEM_RECOMMENDED),
+
+		list("INSTRUCTIONAL PAMPHLETS", 0, null, null, null),
+		list("Medic", 300, /obj/item/pamphlet/skill/medic, null, VENDOR_ITEM_RECOMMENDED),
+		list("Survival", 300, /obj/item/pamphlet/skill/survival, null, VENDOR_ITEM_RECOMMENDED),
+		list("Teammate", 300, /obj/item/pamphlet/skill/teammate, null, VENDOR_ITEM_RECOMMENDED),
+		list("Retriever", 300, /obj/item/pamphlet/skill/retriever, null, VENDOR_ITEM_RECOMMENDED)
+	)

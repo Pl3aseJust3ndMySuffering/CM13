@@ -387,3 +387,72 @@ FORENSIC SCANNER
 		printing.name = scan_name
 		printing.info = "Chemicals found: [dat]"
 		user.put_in_hands(printing)
+
+/obj/item/device/bioanalyzer
+	name = "Bio Scanner"
+	desc = "A hand-held specially designed bio scanner meant for analyzing foreign lifeforms and data. It can store bio data for exchanging points in RnD vendor."
+	icon_state = "multitool2"
+	item_state = "analyzer"
+	w_class = SIZE_SMALL
+	flags_atom = FPRINT|CONDUCT
+	flags_equip_slot = SLOT_WAIST
+	throwforce = 5
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 20
+	matter = list("metal" = 50,"glass" = 50)
+
+	var/SP = 0
+
+/obj/item/device/bioanalyzer/attack_self(mob/user)
+	..()
+
+	to_chat(user, SPAN_NOTICE("Curruntly worth of research data points: [SP]."))
+	var/E
+	var/lg = length(bioscanned)
+	var/cn = 0
+	for(var/e in bioscanned)
+		E += "[e]"
+		cn++
+		if(cn < lg)
+			E += ", "
+	to_chat(user, SPAN_NOTICE("Stored readings of corpses by this device: [length(bioscanned) > 0 ? "[E]" : "No data"]."))
+
+/obj/item/device/bioanalyzer/attack(atom/movable/A, mob/living/user)
+	if(isliving(A))
+		var/mob/living/L = A
+		if(!L.is_dead())
+			to_chat(user, SPAN_DANGER("OH FUCK IT IS LIVING AND KICKING!"))
+			return
+		for(var/i in bioscanned)
+			//var/obj/item/device/bioanalyzer/B = i
+			//for(var/s in bioscanned)
+			if(A == i)
+				to_chat(user, SPAN_WARNING("[A] already scanned!"))
+				return
+		var/PTG = 0
+		if(isYautja(A))
+			PTG += 250
+		else if(isXeno(A))
+			var/mob/living/carbon/Xenomorph/x = A
+			if(isXenoQueen(x))
+				PTG += 400
+			PTG += 50 * x.tier^2 + x.mob_size*0.3 + x.maxHealth*0.005 + (x.plasma_max + x.plasma_stored)*0.0005
+		bioscanned += A
+		SP += PTG
+		to_chat(user, SPAN_WARNING("[A] scanned. As last scan brought [PTG], scanner posses now [SP] points."))
+
+/obj/item/device/bioanalyzer/afterattack(obj/O, mob/user as mob, proximity)
+	if(istype(O,/obj/structure/machinery/cm_vending/own_points/rnd_vendor))
+		var/obj/structure/machinery/cm_vending/own_points/rnd_vendor/V = O
+		to_chat(user, SPAN_WARNING("Swiping scanner by another scanner..."))
+		if(SP > 0)
+			V.available_points = V.available_points + SP
+			V.available_points_to_display = V.available_points
+			SP = 0
+			to_chat(user, SPAN_NOTICE("You loaded [SP]. Currently, points-balance is [V.available_points]"))
+		else if(SP <= 0 && V.available_points > 0)
+			SP += V.available_points
+			V.available_points = 0
+			to_chat(user, SPAN_NOTICE("You cleared points-balance of [V]. Now, scanners posses [SP] points."))
+		src.add_fingerprint(user)
+	return

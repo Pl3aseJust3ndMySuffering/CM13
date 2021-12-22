@@ -134,6 +134,9 @@ GLOBAL_LIST_INIT(custom_event_info_list, setup_custom_event_info())
 // Posters
 GLOBAL_LIST_INIT(poster_designs, subtypesof(/datum/poster))
 
+// Bio Scanners
+var/global/list/bioscanned = list() //Yeah, no better way
+
 //Preferences stuff
 	// Ethnicities
 GLOBAL_REFERENCE_LIST_INDEXED(ethnicities_list, /datum/ethnicity, name)			// Stores /datum/ethnicity indexed by name

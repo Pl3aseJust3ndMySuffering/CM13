@@ -131,7 +131,13 @@
 	if (ishuman(AM))
 		var/mob/living/carbon/human/H = AM
 		if (!isYautja(H) && !H.ally_of_hivenumber(linked_hive.hivenumber)) // predators are immune to weed slowdown effect
-			H.next_move_slowdown = H.next_move_slowdown + weed_strength
+			var/d = 0
+			if(H.shoes) //For less lag
+				if(istype(H.shoes,/obj/item/clothing/shoes/marine/advanced)) //advanced boots?
+					d = 1
+			if(d) // is advanced?
+				H.next_move_slowdown = H.next_move_slowdown + weed_strength*0.15
+			else H.next_move_slowdown = H.next_move_slowdown + weed_strength
 	else if (isXeno(AM))
 		var/mob/living/carbon/Xenomorph/X = AM
 		if (!linked_hive.is_ally(X))

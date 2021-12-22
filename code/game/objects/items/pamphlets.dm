@@ -80,3 +80,26 @@ obj/item/pamphlet/Initialize()
 
 	bypass_pamphlet_limit = TRUE
 
+/obj/item/pamphlet/skill/medic
+	name = "Medic instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has a curvy medical insignia."
+	icon_state = "pamphlet_medical"
+	trait = /datum/character_trait/skills/medic
+
+/obj/item/pamphlet/skill/survival
+	name = "Survival instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has a exoskeleton insignia."
+	icon_state = "pamphlet_powerloader"
+	trait = /datum/character_trait/skills/survival
+
+/obj/item/pamphlet/skill/teammate
+	name = "Teammate instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has the team image on it."
+	icon_state = "pamphlet_jtac"
+	trait = /datum/character_trait/skills/teammate
+
+/obj/item/pamphlet/skill/retriever
+	name = "Retriever instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a cart on it."
+	icon_state = "pamphlet_vehicle"
+	trait = /datum/character_trait/skills/retriever
