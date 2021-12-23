@@ -448,8 +448,8 @@ FORENSIC SCANNER
 		if(SP > 0)
 			V.available_points = V.available_points + SP
 			V.available_points_to_display = V.available_points
-			SP = 0
 			to_chat(user, SPAN_NOTICE("You loaded [SP]. Currently, points-balance is [V.available_points]"))
+			SP = 0
 		else if(SP <= 0 && V.available_points > 0)
 			SP += V.available_points
 			V.available_points = 0
