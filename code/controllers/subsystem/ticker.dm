@@ -212,8 +212,8 @@ SUBSYSTEM_DEF(ticker)
 		apply_lazy_timings()
 
 
-	if(CONFIG_GET(flag/autooocmute))
-		ooc_allowed = FALSE
+	/*if(CONFIG_GET(flag/autooocmute))
+		ooc_allowed = FALSE*/
 
 	CHECK_TICK
 	for(var/I in round_start_events)

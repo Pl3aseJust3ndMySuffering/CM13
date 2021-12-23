@@ -89,3 +89,39 @@
 	trait_name = "Powerloader Usage Training"
 	trait_desc = "Boosts the powerloader skill to 1. Crewmember received training in operating powerloaders."
 	skill = SKILL_POWERLOADER
+
+/datum/character_trait/skills/medic
+	trait_name = "Medical Training"
+	trait_desc = "Boosts the surgery to 1 and medical skills to 1. Crewmember received full training in medical and maintaining simple surgery help."
+	skill = SKILL_MEDICAL
+	secondary_skill = SKILL_SURGERY
+	skill_cap = 2
+	secondary_skill_cap = 1
+	skill_increment = 2
+
+/datum/character_trait/skills/survival
+	trait_name = "Survival Training"
+	trait_desc = "Boosts the endurance to 4 and CQC to 3. Crewmember received advanced techniques to withstand damage and good training in CQC to evade attacks."
+	skill = SKILL_ENDURANCE
+	secondary_skill = SKILL_CQC
+	skill_cap = 3
+	secondary_skill_cap = 2
+	skill_increment = 2
+
+/datum/character_trait/skills/teammate
+	trait_name = "Team Training"
+	trait_desc = "Boosts the leadership to 2 and firearms to 2. Crewmember received training in shouting orders and additional training in firearms to help their teammates."
+	skill = SKILL_LEADERSHIP
+	secondary_skill = SKILL_FIREARMS
+	skill_cap = 2
+	secondary_skill_cap = 2
+	skill_increment = 2
+
+/datum/character_trait/skills/retriever
+	trait_name = "Retriever Training"
+	trait_desc = "Boosts the CQC to 2 and police to 1. Crewmember received avanced training in retrieving injured fellow teammates and evading incoming attacks."
+	skill = SKILL_CQC
+	secondary_skill = SKILL_POLICE
+	skill_cap = 4
+	secondary_skill_cap = 1
+	skill_increment = 3

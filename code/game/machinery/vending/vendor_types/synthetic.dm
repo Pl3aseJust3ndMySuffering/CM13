@@ -16,7 +16,7 @@
 		list("Light Replacer", 2, /obj/item/device/lightreplacer, null, VENDOR_ITEM_REGULAR),
 		list("Metal x10", 5, /obj/item/stack/sheet/metal/small_stack, null, VENDOR_ITEM_REGULAR),
 		list("Multitool", 4, /obj/item/device/multitool, null, VENDOR_ITEM_REGULAR),
-		list("Plasteel x10", 7, /obj/item/stack/sheet/plasteel/small_stack, null, VENDOR_ITEM_REGULAR),
+		list("Plasteel x10", 7, /obj/item/stack/sheet/plasteel/small_stack, null, VENDOR_ITEM_RECOMMENDED),
 		list("Sandbags x25", 10, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_REGULAR),
 		list("Industrial Blowtorch", 4, /obj/item/tool/weldingtool/largetank, null, VENDOR_ITEM_RECOMMENDED),
 
@@ -31,14 +31,14 @@
 		list("Stasis Bag", 6, /obj/item/bodybag/cryobag, null, VENDOR_ITEM_REGULAR),
 		list("Surgical Line", 4, /obj/item/tool/surgery/surgical_line, null, VENDOR_ITEM_REGULAR),
 
-		list("Pillbottle (Bicaridine)", 5, /obj/item/storage/pill_bottle/bicaridine, null, VENDOR_ITEM_RECOMMENDED),
+		list("Pillbottle (Bicaridine)", 5, /obj/item/storage/pill_bottle/bicaridine, null, VENDOR_ITEM_REGULAR),
 		list("Pillbottle (Dexalin)", 5, /obj/item/storage/pill_bottle/dexalin, null, VENDOR_ITEM_REGULAR),
 		list("Pillbottle (Dylovene)", 5, /obj/item/storage/pill_bottle/antitox, null, VENDOR_ITEM_REGULAR),
 		list("Pillbottle (Inaprovaline)", 5, /obj/item/storage/pill_bottle/inaprovaline, null, VENDOR_ITEM_REGULAR),
-		list("Pillbottle (Kelotane)", 5, /obj/item/storage/pill_bottle/kelotane, null, VENDOR_ITEM_RECOMMENDED),
+		list("Pillbottle (Kelotane)", 5, /obj/item/storage/pill_bottle/kelotane, null, VENDOR_ITEM_REGULAR),
 		list("Pillbottle (Peridaxon)", 5, /obj/item/storage/pill_bottle/peridaxon, null, VENDOR_ITEM_REGULAR),
 		list("Pillbottle (QuickClot)", 5, /obj/item/storage/pill_bottle/quickclot, null, VENDOR_ITEM_REGULAR),
-		list("Pillbottle (Tramadol)", 5, /obj/item/storage/pill_bottle/tramadol, null, VENDOR_ITEM_RECOMMENDED),
+		list("Pillbottle (Tramadol)", 5, /obj/item/storage/pill_bottle/tramadol, null, VENDOR_ITEM_REGULAR),
 
 		list("Injector (Bicaridine)", 1, /obj/item/reagent_container/hypospray/autoinjector/bicaridine, null, VENDOR_ITEM_REGULAR),
 		list("Injector (Dexalin+)", 1, /obj/item/reagent_container/hypospray/autoinjector/dexalinp, null, VENDOR_ITEM_REGULAR),
@@ -55,9 +55,10 @@
 
 		list("OTHER SUPPLIES", 0, null, null, null),
 		list("Binoculars", 5,/obj/item/device/binoculars, null, VENDOR_ITEM_RECOMMENDED),
-		list("Flashlight", 1, /obj/item/device/flashlight, null, VENDOR_ITEM_RECOMMENDED),
+		list("Flashlight", 1, /obj/item/device/flashlight, null, VENDOR_ITEM_REGULAR),
 		list("Fulton Recovery Device", 5, /obj/item/stack/fulton, null, VENDOR_ITEM_REGULAR),
-		list("Motion Detector", 5, /obj/item/device/motiondetector, null, VENDOR_ITEM_REGULAR),
+		list("Motion Detector", 5, /obj/item/device/motiondetector, null, VENDOR_ITEM_RECOMMENDED),
+		list("Incision Management System", 35, /obj/item/tool/surgery/scalpel/manager, null, VENDOR_ITEM_RECOMMENDED),
 		list("Space Cleaner", 2, /obj/item/reagent_container/spray/cleaner, null, VENDOR_ITEM_REGULAR),
 		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
 
@@ -274,3 +275,73 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
         /obj/item/ammo_magazine/smg/nailgun,
         /obj/item/ammo_magazine/smg/nailgun,
     )
+
+
+
+/////////////////////////////////////////////////
+////////////////////////////////////////////////
+///////////////////////////////////////////////
+//////////////////////////////////////////////
+
+
+//------------RND VENDOR---------------
+/obj/structure/machinery/cm_vending/own_points/rnd_vendor
+	name = "\improper RnD Vendor"
+	desc = "A smaller vendor hooked up to a special carrgo of specially provisioned, experimental tools and equipment made by Rnd. Handle with care."
+	icon_state = "robotics"
+	available_points = 0
+	available_points_to_display = 0
+	vendor_theme = VENDOR_THEME_COMPANY
+	//req_access = list(ACCESS_MARINE_COMMANDER) ACCESS_MARINE
+	//vendor_role = list(JOB_SYNTH)
+
+/obj/structure/machinery/cm_vending/own_points/rnd_vendor
+	listed_products = list(
+		list("ANALYZER", 0, null, null, null),
+		list("Analyzer", 0, /obj/item/device/bioanalyzer,MARINE_CAN_BUY_SCANNER,VENDOR_ITEM_MANDATORY),
+
+		list("WEAPONS", 0, null, null, null),
+		list("Breaching Hammer", 250, /obj/item/weapon/melee/twohanded/breacher, null, VENDOR_ITEM_REGULAR),
+		list("Telescopic Baton", 75, /obj/item/weapon/melee/telebaton, null, VENDOR_ITEM_REGULAR),
+		list("M41A/2", 250, /obj/item/weapon/gun/rifle/m41a/elite, null, VENDOR_ITEM_RECOMMENDED),
+		list("M39/2", 250, /obj/item/weapon/gun/smg/m39/elite, null, VENDOR_ITEM_REGULAR),
+
+		list("STIMULANTS", 0, null, null, null),
+		list("Emergency Autoinjector", 50, /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless, null, VENDOR_ITEM_REGULAR),
+		list("Redemption Stimulant", 250, /obj/item/storage/pouch/stimulant_injector/redemption, null, VENDOR_ITEM_RECOMMENDED),
+		list("Brain Stimulant", 250, /obj/item/storage/pouch/stimulant_injector/brain, null, VENDOR_ITEM_REGULAR),
+		list("Speed Stimulant", 250, /obj/item/storage/pouch/stimulant_injector/speed, null, VENDOR_ITEM_REGULAR),
+
+		list("MEDICAL", 0, null, null, null),
+		list("Upgraded trauma Kit", 50, /obj/item/stack/medical/advanced/bruise_pack/upgraded, null, VENDOR_ITEM_REGULAR),
+		list("Upgraded burn Kit", 50, /obj/item/stack/medical/advanced/ointment/upgraded, null, VENDOR_ITEM_REGULAR),
+		list("Nanosplints", 75, /obj/item/stack/medical/splint/nano, null, VENDOR_ITEM_REGULAR),
+		list("Upgraded Defibrillator", 50, /obj/item/device/defibrillator/upgraded, null, VENDOR_ITEM_RECOMMENDED),
+		list("Incision Management System", 50, /obj/item/tool/surgery/scalpel/manager, null, VENDOR_ITEM_REGULAR),
+
+		list("IMPLANTS", 0, null, null, null),
+		list("Nightvision Implant", 100, /obj/item/device/implanter/nvg, null, VENDOR_ITEM_REGULAR),
+		list("Rejuvenation Implant", 100, /obj/item/device/implanter/rejuv, null, VENDOR_ITEM_REGULAR),
+		list("Agility Implant", 100, /obj/item/device/implanter/agility, null, VENDOR_ITEM_REGULAR),
+		list("Subdermal Armor", 100, /obj/item/device/implanter/subdermal_armor, null, VENDOR_ITEM_RECOMMENDED),
+
+		list("EQUIPMENT", 0, null, null, null),
+		list("Crew Monitor", 75, /obj/item/tool/crew_monitor, null, VENDOR_ITEM_REGULAR),
+		list("Resined boots", 250, /obj/item/clothing/shoes/marine/advanced, null, VENDOR_ITEM_RECOMMENDED),
+		list("M4RA Battle sight", 300, /obj/item/clothing/glasses/night/M4RA, null, VENDOR_ITEM_RECOMMENDED),
+		list("Signal scanner (WARNING)", 300, /obj/item/device/bioscan, null, VENDOR_ITEM_REGULAR),
+
+		list("AMMUNITION", 0, null, null, null),
+		list("Incendiary Buckshot Kit", 200, /obj/item/storage/box/shotgun/buckshot, null, VENDOR_ITEM_RECOMMENDED),
+		list("Incendiary Slug Kit", 150, /obj/item/storage/box/shotgun/slug, null, VENDOR_ITEM_REGULAR),
+		list("Incendiary Ammo Kit", 200, /obj/item/ammo_kit/incendiary, null, VENDOR_ITEM_RECOMMENDED),
+		list("Cluster Ammo Kit", 150, /obj/item/ammo_kit/cluster, null, VENDOR_ITEM_REGULAR),
+		list("Toxin Ammo Kit", 150, /obj/item/ammo_kit/toxin, null, VENDOR_ITEM_RECOMMENDED),
+		list("Wall-Piercing Ammo Kit", 200, /obj/item/ammo_kit/penetrating, null, VENDOR_ITEM_REGULAR),
+
+		list("INSTRUCTIONAL PAMPHLETS", 0, null, null, null),
+		list("Medic", 300, /obj/item/pamphlet/skill/medic, null, VENDOR_ITEM_RECOMMENDED),
+		list("Survival", 300, /obj/item/pamphlet/skill/survival, null, VENDOR_ITEM_RECOMMENDED),
+		list("Teammate", 300, /obj/item/pamphlet/skill/teammate, null, VENDOR_ITEM_RECOMMENDED),
+		list("Retriever", 300, /obj/item/pamphlet/skill/retriever, null, VENDOR_ITEM_RECOMMENDED)
+	)
