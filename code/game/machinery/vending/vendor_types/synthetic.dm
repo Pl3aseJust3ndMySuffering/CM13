@@ -329,6 +329,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Crew Monitor", 75, /obj/item/tool/crew_monitor, null, VENDOR_ITEM_REGULAR),
 		list("Resined boots", 250, /obj/item/clothing/shoes/marine/advanced, null, VENDOR_ITEM_RECOMMENDED),
 		list("M4RA Battle sight", 300, /obj/item/clothing/glasses/night/M4RA, null, VENDOR_ITEM_RECOMMENDED),
+		list("Signal scanner (WARNING)", 300, /obj/item/device/bioscan, null, VENDOR_ITEM_REGULAR),
 
 		list("AMMUNITION", 0, null, null, null),
 		list("Incendiary Buckshot Kit", 200, /obj/item/storage/box/shotgun/buckshot, null, VENDOR_ITEM_RECOMMENDED),
@@ -336,6 +337,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Incendiary Ammo Kit", 200, /obj/item/ammo_kit/incendiary, null, VENDOR_ITEM_RECOMMENDED),
 		list("Cluster Ammo Kit", 150, /obj/item/ammo_kit/cluster, null, VENDOR_ITEM_REGULAR),
 		list("Toxin Ammo Kit", 150, /obj/item/ammo_kit/toxin, null, VENDOR_ITEM_RECOMMENDED),
+		list("Wall-Piercing Ammo Kit", 200, /obj/item/ammo_kit/penetrating, null, VENDOR_ITEM_REGULAR),
 
 		list("INSTRUCTIONAL PAMPHLETS", 0, null, null, null),
 		list("Medic", 300, /obj/item/pamphlet/skill/medic, null, VENDOR_ITEM_RECOMMENDED),

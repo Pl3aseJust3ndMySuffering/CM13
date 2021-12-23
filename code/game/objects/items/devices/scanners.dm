@@ -436,7 +436,7 @@ FORENSIC SCANNER
 			var/mob/living/carbon/Xenomorph/x = A
 			if(isXenoQueen(x))
 				PTG += 400
-			PTG += 50 * x.tier^2 + x.mob_size*0.3 + x.maxHealth*0.005 + (x.plasma_max + x.plasma_stored)*0.0005
+			PTG += 50 * x.tier^3 + x.mob_size*0.3 + x.maxHealth*0.005 + (x.plasma_max + x.plasma_stored)*0.0005
 		bioscanned += A
 		SP += PTG
 		to_chat(user, SPAN_WARNING("[A] scanned. As last scan brought [PTG], scanner posses now [SP] points."))
@@ -456,3 +456,71 @@ FORENSIC SCANNER
 			to_chat(user, SPAN_NOTICE("You cleared points-balance of [V]. Now, scanners posses [SP] points."))
 		src.add_fingerprint(user)
 	return
+
+/obj/item/device/bioscan
+	name = "Signal scanner (WARNING)"
+	desc = "Special sturdy-case that on activation triggers bioscan of unknown lifeforms. WARNING! It also reveals location where it activated!"
+	icon_state = "forensic0"
+	item_state = "analyzer"
+	w_class = SIZE_SMALL
+	flags_atom = FPRINT|CONDUCT
+	flags_equip_slot = SLOT_WAIST
+	throwforce = 5
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 20
+	matter = list("metal" = 50,"glass" = 50)
+	var/used = 0
+
+/obj/item/device/bioscan/attack_self(mob/user)
+	..()
+	if(used == 0)
+		to_chat(user, SPAN_DANGER("[src] starts to make a noise!"))
+		icon_state = "+scanning"
+
+		for(var/i in GLOB.living_xeno_list)
+			var/mob/M = i
+			M << sound(get_sfx("queen"), wait = 0, volume = 50)
+			to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
+			to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense strong signal reaches this planet from [get_area_name(src)]. It may be better if you hurry up and move to another location!"))
+
+		spawn(60)
+			marine_bioscan()
+			to_chat(user, SPAN_NOTICE("[src] with a slight hum stopped making any moving on monitor!"))
+			icon_state = "+prints"
+			used = 1
+	else to_chat(user, SPAN_DANGER("[src] is already used, right now it is trash!"))
+
+/obj/item/device/bioscan/proc/marine_bioscan(var/delta = 2)
+	var/numXenosPlanet	= 0
+	var/numXenosShipAres = 0 //ARES scan doesn't count containment xenos
+	var/list/xenosPlanetLocations = list()
+	var/list/xenosShipLocations = list()
+
+	var/larva = 0
+	var/datum/hive_status/HS
+	for(var/hivenumber in GLOB.hive_datum)
+		HS = GLOB.hive_datum[hivenumber]
+		larva += HS.stored_larva
+
+	for(var/mob/M in GLOB.living_xeno_list)
+		var/atom/where = M
+		if (where == 0 && M.loc)
+			where = M.loc
+		if(where.z in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT)))
+			numXenosPlanet++
+			xenosPlanetLocations+=where
+		else if(is_mainship_level(where.z))
+			numXenosShipAres++
+			xenosShipLocations+=where
+
+	var/RandomXenosPlanetLocation = ""
+	if (xenosPlanetLocations.len>0)
+		RandomXenosPlanetLocation = get_area_name(pick(xenosPlanetLocations))
+	var/RandomXenosShipLocation = ""
+	if (xenosShipLocations.len>0)
+		RandomXenosShipLocation = get_area_name(pick(xenosShipLocations))
+	numXenosPlanet = max(0, numXenosPlanet + rand(-delta, delta))
+
+	var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
+	var/input = "Bioscan complete.\n\nSensors indicate [numXenosShipAres ? "[numXenosShipAres]":"no"] unknown lifeform signature[!numXenosShipAres || numXenosShipAres > 1 ? "s":""] present on the ship[numXenosShipAres&&RandomXenosShipLocation?", including one in [RandomXenosShipLocation],":""] and [numXenosPlanet ? "approximately [numXenosPlanet]":"no"] signature[!numXenosPlanet || numXenosPlanet > 1 ? "s":""] located elsewhere[numXenosPlanet&&RandomXenosPlanetLocation?", including one in [RandomXenosPlanetLocation]":""]."
+	marine_announcement(input, name, 'sound/AI/bioscan.ogg')
