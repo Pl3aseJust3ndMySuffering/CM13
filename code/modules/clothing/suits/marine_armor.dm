@@ -440,6 +440,20 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "B12 pattern marine"
 
+/obj/item/clothing/suit/storage/marine/rnd
+	name = "\improper B13 pattern marine armor"
+	desc = "A lightweight suit of hitin fiber body armor built for really quick movement, made in RnD. B12 but better against acid, with lower resistance to bombs and bullets! Designed in a inlovely blueish. Use it to toggle the built-in flashlight."
+	icon_state = "rnd"
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	specialty = "B13 pattern marine"
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+
 /obj/item/clothing/suit/storage/marine/tanker
 	name = "\improper M3 pattern tanker armor"
 	desc = "A modified and refashioned suit of M3 Pattern armor designed to be worn by the loader of a USCM vehicle crew. While the suit is a bit more encumbering to wear with the crewman uniform, it offers the loader a degree of protection that would otherwise not be enjoyed."
