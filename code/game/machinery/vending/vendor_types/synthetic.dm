@@ -292,6 +292,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 	available_points = 0
 	available_points_to_display = 0
 	vendor_theme = VENDOR_THEME_COMPANY
+	wrenchable = TRUE
 
 /obj/structure/machinery/cm_vending/own_points/rnd_vendor
 	listed_products = list(
