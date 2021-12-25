@@ -418,10 +418,10 @@ FORENSIC SCANNER
 	to_chat(user, SPAN_NOTICE("Stored readings of corpses by this device: [length(bioscanned) > 0 ? "[E]" : "No data"]."))
 
 /obj/item/device/bioanalyzer/attack(atom/movable/A, mob/living/user)
-	var/PTG = 0
 	if(isliving(A))
 		var/mob/living/L = A
 		if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			var/PTG = 0
 			if(!L.is_dead())
 				to_chat(user, SPAN_DANGER("OH FUCK IT IS LIVING AND KICKING!"))
 				return
@@ -430,26 +430,18 @@ FORENSIC SCANNER
 					to_chat(user, SPAN_WARNING("[A] already scanned!"))
 					return
 			if(isYautja(A))
-				PTG += 600
-				to_chat(user, SPAN_DANGER("RnD has an interest in this foreign corpse's data! They supported you with additional 600 points!"))
+				PTG += 500
+				to_chat(user, SPAN_DANGER("RnD has an interest in this foreign corpse's data! They supported you with additional 500 points!"))
 			else if(isXeno(A))
 				var/mob/living/carbon/Xenomorph/x = A
 				if(isXenoQueen(x))
-					PTG += 800
-					to_chat(user, SPAN_DANGER("RnD has a big interest in this corpse's data! They supported you with additional 800 points!"))
+					PTG += 600
+					to_chat(user, SPAN_DANGER("RnD has a big interest in this corpse's data! They supported you with additional 600 points!"))
 				PTG += 50 * x.tier*x.tier + x.mob_size*0.3 + x.maxHealth*0.005 + (x.plasma_max + x.plasma_stored)*0.0005
 			else if(isHumanSynthStrict(A))
 				if(!(L.status_flags & PERMANENTLY_DEAD)) return
 				PTG += 50
 				to_chat(user, SPAN_DANGER("Damage analyze of corpse brought [PTG] points."))
-	/*else if(istype(A,/obj/effect/alien/resin/special/))
-		if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			if(istype(A,/obj/effect/alien/resin/special/pylon/core))
-				PTG += 350
-			else if(istype(A,/obj/effect/alien/resin/special/pool))
-				var/obj/effect/alien/resin/special/pool/P = A
-				PTG += 50 + 30*P.linked_hive.stored_larva
-				to_chat(user, SPAN_DANGER("While you were analyzing [P] with [src], [P.linked_hive.stored_larva >= 1 ? "you caught a glimpse of [P.linked_hive.stored_larva]!" : "it was weirdly silent."]"))*/
 			bioscanned += A
 			SP += PTG
 			to_chat(user, SPAN_WARNING("[A] scanned. As last scan brought [PTG], scanner posses now [SP] points."))
@@ -469,8 +461,8 @@ FORENSIC SCANNER
 			to_chat(user, SPAN_NOTICE("You cleared points-balance of [V]. Now, scanners posses [SP] points."))
 		src.add_fingerprint(user)
 	else if(istype(O,/obj/effect/alien/resin/special/))
-		var/PTG = 0
 		if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			var/PTG = 0
 			for(var/i in bioscanned)
 				if(O == i)
 					to_chat(user, SPAN_WARNING("[O] already scanned!"))
@@ -483,9 +475,9 @@ FORENSIC SCANNER
 				to_chat(user, SPAN_DANGER("While you were analyzing [P] with [src], [P.linked_hive.stored_larva >= 1 ? "you caught a glimpse of [P.linked_hive.stored_larva] worms!" : "it was weirdly silent."]"))
 			else if(istype(O,/obj/effect/alien/resin/special/pylon)) PTG += 30
 			else PTG += 100
-		bioscanned += O
-		SP += PTG
-		to_chat(user, SPAN_WARNING("[O] scanned. As last scan brought [PTG], scanner posses now [SP] points."))
+			bioscanned += O
+			SP += PTG
+			to_chat(user, SPAN_WARNING("[O] scanned. As last scan brought [PTG], scanner posses now [SP] points."))
 	return
 
 /obj/item/device/bioscan
