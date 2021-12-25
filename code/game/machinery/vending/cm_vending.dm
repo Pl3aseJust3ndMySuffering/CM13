@@ -1042,6 +1042,13 @@ IN_USE						used for vending/denying
 			else
 				available_points -= cost
 				available_points_to_display = available_points
+			if(L[4])
+				if(H.marine_buy_flags & L[4])
+					H.marine_buy_flags &= ~L[4]
+				else
+					to_chat(H, SPAN_WARNING("You can't buy things from this category anymore."))
+					vend_fail()
+					return FALSE
 
 			vend_succesfully(L, H, T)
 
