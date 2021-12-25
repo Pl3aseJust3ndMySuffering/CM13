@@ -296,7 +296,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /obj/structure/machinery/cm_vending/own_points/rnd_vendor
 	listed_products = list(
 		list("ANALYZER", 0, null, null, null),
-		list("Analyzer", 0, /obj/item/device/bioanalyzer,MARINE_CAN_BUY_SCANNER,VENDOR_ITEM_MANDATORY),
+		list("Analyzer", 0, /obj/item/device/bioanalyzer, MARINE_CAN_BUY_SCANNER, VENDOR_ITEM_MANDATORY),
 
 		list("WEAPONS", 0, null, null, null),
 		list("Breaching Hammer", 175, /obj/item/weapon/melee/twohanded/breacher, null, VENDOR_ITEM_REGULAR),
@@ -306,9 +306,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 		list("STIMULANTS", 0, null, null, null),
 		list("Emergency Autoinjector", 30, /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless, null, VENDOR_ITEM_REGULAR),
-		list("Redemption Stimulant", 200, /obj/item/storage/pouch/stimulant_injector/redemption, null, VENDOR_ITEM_RECOMMENDED),
-		list("Brain Stimulant", 150, /obj/item/storage/pouch/stimulant_injector/brain, null, VENDOR_ITEM_REGULAR),
-		list("Speed Stimulant", 150, /obj/item/storage/pouch/stimulant_injector/speed, null, VENDOR_ITEM_REGULAR),
+		list("Redemption Stimulant", 200, /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant, null, VENDOR_ITEM_RECOMMENDED),
+		list("Brain Stimulant", 150, /obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant, null, VENDOR_ITEM_REGULAR),
+		list("Speed Stimulant", 150, /obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant, null, VENDOR_ITEM_REGULAR),
 
 		list("MEDICAL", 0, null, null, null),
 		list("Upgraded trauma Kit", 25, /obj/item/stack/medical/advanced/bruise_pack/upgraded, null, VENDOR_ITEM_REGULAR),
@@ -328,6 +328,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Bio-proofed uniform", 100, /obj/item/clothing/under/marine/rnd, null, VENDOR_ITEM_REGULAR),
 		list("Resin-proofed boots", 200, /obj/item/clothing/shoes/marine/advanced, null, VENDOR_ITEM_RECOMMENDED),
 		list("B13 armor", 200, /obj/item/clothing/suit/storage/marine/rnd, null, VENDOR_ITEM_RECOMMENDED),
+		list("RnD Full-suit", 200, /obj/item/clothing/suit/storage/marine/rnd/coat, null, VENDOR_ITEM_REGULAR),
 		list("Insulated armored Gloves", 100, /obj/item/clothing/gloves/marine/veteran/insulated, null, VENDOR_ITEM_REGULAR),
 		list("M4RA Battle sight", 200, /obj/item/clothing/glasses/night/M4RA, null, VENDOR_ITEM_REGULAR),
 		list("Signal scanner (WARNING)", 200, /obj/item/device/bioscan, null, VENDOR_ITEM_REGULAR),
@@ -344,5 +345,13 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Medic", 200, /obj/item/pamphlet/skill/medic, null, VENDOR_ITEM_RECOMMENDED),
 		list("Survival", 200, /obj/item/pamphlet/skill/survival, null, VENDOR_ITEM_RECOMMENDED),
 		list("Teammate", 200, /obj/item/pamphlet/skill/teammate, null, VENDOR_ITEM_RECOMMENDED),
-		list("Retriever", 200, /obj/item/pamphlet/skill/retriever, null, VENDOR_ITEM_RECOMMENDED)
+		list("Retriever", 200, /obj/item/pamphlet/skill/retriever, null, VENDOR_ITEM_RECOMMENDED),
+
+		list("ADDITIONAL HANDHELD DEFENSE", 0, null, null, null),
+		list("21S Tesla Coil", 150, /obj/item/defenses/handheld/tesla_coil, null, VENDOR_ITEM_REGULAR),
+		list("JIMA Planted Flag", 150, /obj/item/defenses/handheld/planted_flag, null, VENDOR_ITEM_REGULAR),
+		list("R-1NG Bell Tower", 150, /obj/item/defenses/handheld/bell_tower, null, VENDOR_ITEM_REGULAR),
+		list("UA 42-F Sentry Flamer", 150, /obj/item/defenses/handheld/sentry/flamer, null, VENDOR_ITEM_REGULAR),
+		list("UA 571-C Sentry Gun", 150, /obj/item/defenses/handheld/sentry, null,VENDOR_ITEM_REGULAR),
+		list("Sentry Upgrade kit", 75, /obj/item/engi_upgrade_kit, null, VENDOR_ITEM_REGULAR)
 	)

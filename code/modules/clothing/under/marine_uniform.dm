@@ -71,7 +71,7 @@
 
 /obj/item/clothing/under/marine/rnd
 	name = "\improper USCM RnD-uniform"
-	desc = "RnD-issue Marine uniform. They have shards of light Kevlar to help protect against stabbing weapons and bullets and they have bio-material composite to help protect against shocks and acid."
+	desc = "RnD-issue Marine uniform. They have shards of light Kevlar to help protect against stabbing weapons and bullets, also they have bio-material composite to help protect against shocks, acid and cold temperatures."
 	icon_state = "rnd_jumpsuit"
 	item_state = "rnd_jumpsuit"
 	worn_state = "rnd_jumpsuit"
@@ -79,6 +79,7 @@
 	armor_bio = CLOTHING_ARMOR_LOW
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	flags_jumpsuit = FALSE
+	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 
 /obj/item/clothing/under/marine/sniper
 	name = "\improper USCM sniper uniform"

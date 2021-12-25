@@ -480,7 +480,7 @@ FORENSIC SCANNER
 			else if(istype(O,/obj/effect/alien/resin/special/pool))
 				var/obj/effect/alien/resin/special/pool/P = O
 				PTG += 50 + 30*P.linked_hive.stored_larva
-				to_chat(user, SPAN_DANGER("While you were analyzing [P] with [src], [P.linked_hive.stored_larva >= 1 ? "you caught a glimpse of [P.linked_hive.stored_larva]!" : "it was weirdly silent."]"))
+				to_chat(user, SPAN_DANGER("While you were analyzing [P] with [src], [P.linked_hive.stored_larva >= 1 ? "you caught a glimpse of [P.linked_hive.stored_larva] worms!" : "it was weirdly silent."]"))
 			else if(istype(O,/obj/effect/alien/resin/special/pylon)) PTG += 30
 			else PTG += 100
 		bioscanned += O
