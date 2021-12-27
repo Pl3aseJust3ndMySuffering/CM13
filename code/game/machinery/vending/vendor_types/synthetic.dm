@@ -302,8 +302,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("WEAPONS", 0, null, null, null),
 		list("Breaching Hammer", 175, /obj/item/weapon/melee/twohanded/breacher, null, VENDOR_ITEM_REGULAR),
 		list("Telescopic Baton", 125, /obj/item/weapon/melee/telebaton, null, VENDOR_ITEM_REGULAR),
-		list("M41A/2", 250, /obj/item/weapon/gun/rifle/m41a/elite, null, VENDOR_ITEM_RECOMMENDED),
-		list("M39/2", 250, /obj/item/weapon/gun/smg/m39/elite, null, VENDOR_ITEM_REGULAR),
+		list("M41A/2", 250, /obj/item/weapon/gun/smg/m41a/elite/free, null, VENDOR_ITEM_RECOMMENDED),
+		list("M39/2", 250, /obj/item/weapon/gun/smg/m39/elite/free, null, VENDOR_ITEM_REGULAR),
 
 		list("STIMULANTS", 0, null, null, null),
 		list("Emergency Autoinjector", 30, /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless, null, VENDOR_ITEM_REGULAR),

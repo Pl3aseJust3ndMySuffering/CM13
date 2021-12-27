@@ -110,6 +110,9 @@
 							/obj/item/attachable/lasersight,
 							)
 
+/obj/item/weapon/gun/smg/m39/elite/free
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+
 /obj/item/weapon/gun/smg/m39/elite/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_SMG
