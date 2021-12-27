@@ -287,7 +287,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 //------------RND VENDOR---------------
 /obj/structure/machinery/cm_vending/own_points/rnd_vendor
 	name = "\improper RnD Vendor"
-	desc = "A smaller vendor hooked up to a special carrgo of specially provisioned, experimental tools and equipment made by Rnd. Handle with care."
+	desc = "A smaller vendor hooked up to a special cargo of specially provisioned, experimental tools and equipment made by Rnd. Handle with care."
 	icon_state = "robotics"
 	available_points = 0
 	available_points_to_display = 0
@@ -327,7 +327,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("EQUIPMENT", 0, null, null, null),
 		list("Crew Monitor", 50, /obj/item/tool/crew_monitor, null, VENDOR_ITEM_REGULAR),
 		list("Bio-proofed uniform", 100, /obj/item/clothing/under/marine/rnd, null, VENDOR_ITEM_REGULAR),
-		list("Resin-proofed boots", 200, /obj/item/clothing/shoes/marine/advanced, null, VENDOR_ITEM_RECOMMENDED),
+		list("Resin-proofed boots", 250, /obj/item/clothing/shoes/marine/advanced, null, VENDOR_ITEM_RECOMMENDED),
 		list("B13 armor", 200, /obj/item/clothing/suit/storage/marine/rnd, null, VENDOR_ITEM_RECOMMENDED),
 		list("RnD Full-suit", 200, /obj/item/clothing/suit/storage/marine/rnd/coat, null, VENDOR_ITEM_REGULAR),
 		list("Insulated armored Gloves", 100, /obj/item/clothing/gloves/marine/veteran/insulated, null, VENDOR_ITEM_REGULAR),
@@ -349,10 +349,10 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Retriever", 200, /obj/item/pamphlet/skill/retriever, null, VENDOR_ITEM_RECOMMENDED),
 
 		list("ADDITIONAL HANDHELD DEFENSE", 0, null, null, null),
-		list("21S Tesla Coil", 150, /obj/item/defenses/handheld/tesla_coil, null, VENDOR_ITEM_REGULAR),
-		list("JIMA Planted Flag", 150, /obj/item/defenses/handheld/planted_flag, null, VENDOR_ITEM_REGULAR),
-		list("R-1NG Bell Tower", 150, /obj/item/defenses/handheld/bell_tower, null, VENDOR_ITEM_REGULAR),
-		list("UA 42-F Sentry Flamer", 150, /obj/item/defenses/handheld/sentry/flamer, null, VENDOR_ITEM_REGULAR),
-		list("UA 571-C Sentry Gun", 150, /obj/item/defenses/handheld/sentry, null,VENDOR_ITEM_REGULAR),
-		list("Sentry Upgrade kit", 75, /obj/item/engi_upgrade_kit, null, VENDOR_ITEM_REGULAR)
+		list("21S Tesla Coil", 175, /obj/item/defenses/handheld/tesla_coil, null, VENDOR_ITEM_REGULAR),
+		list("JIMA Planted Flag", 175, /obj/item/defenses/handheld/planted_flag, null, VENDOR_ITEM_REGULAR),
+		list("R-1NG Bell Tower", 175, /obj/item/defenses/handheld/bell_tower, null, VENDOR_ITEM_REGULAR),
+		list("UA 42-F Sentry Flamer", 175, /obj/item/defenses/handheld/sentry/flamer, null, VENDOR_ITEM_REGULAR),
+		list("UA 571-C Sentry Gun", 175, /obj/item/defenses/handheld/sentry, null,VENDOR_ITEM_REGULAR),
+		list("Sentry Upgrade kit", 25, /obj/item/engi_upgrade_kit, null, VENDOR_ITEM_REGULAR)
 	)
