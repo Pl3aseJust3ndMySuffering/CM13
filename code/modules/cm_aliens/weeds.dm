@@ -136,7 +136,7 @@
 				if(istype(H.shoes,/obj/item/clothing/shoes/marine/advanced)) //advanced boots?
 					d = 1
 			if(d) // is advanced?
-				H.next_move_slowdown = H.next_move_slowdown + weed_strength*0.15
+				H.next_move_slowdown = H.next_move_slowdown + weed_strength*0.4
 			else H.next_move_slowdown = H.next_move_slowdown + weed_strength
 	else if (isXeno(AM))
 		var/mob/living/carbon/Xenomorph/X = AM

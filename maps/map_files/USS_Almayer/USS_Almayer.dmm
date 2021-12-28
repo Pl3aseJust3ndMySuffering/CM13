@@ -22033,6 +22033,7 @@
 	name = "dropship intercom";
 	pixel_y = 24
 	},
+/obj/structure/machinery/cm_vending/own_points/rnd_vendor,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin5";
 	tag = "icon-rasputin5"
@@ -22084,6 +22085,7 @@
 	name = "dropship intercom";
 	pixel_y = 24
 	},
+/obj/structure/machinery/cm_vending/own_points/rnd_vendor,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin5";
 	tag = "icon-rasputin5"

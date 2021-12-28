@@ -431,13 +431,13 @@ FORENSIC SCANNER
 					return
 			if(isYautja(A))
 				PTG += 500
-				to_chat(user, SPAN_DANGER("RnD has an interest in this foreign corpse's data! They supported you with additional 500 points!"))
+				to_chat(user, SPAN_DANGER("RnD has an interest in this foreign corpse's data! They awarded you with additional 500 points!"))
 			else if(isXeno(A))
 				var/mob/living/carbon/Xenomorph/x = A
 				if(isXenoQueen(x))
 					PTG += 600
-					to_chat(user, SPAN_DANGER("RnD has a big interest in this corpse's data! They supported you with additional 600 points!"))
-				PTG += 50 * x.tier*x.tier + x.mob_size*0.3 + x.maxHealth*0.005 + (x.plasma_max + x.plasma_stored)*0.0005
+					to_chat(user, SPAN_DANGER("RnD has a big interest in this corpse's data! They awarded you with additional 600 points!"))
+				PTG += 50 * ((x.tier*x.tier + x.mob_size*0.3 + x.maxHealth*0.005 + (x.plasma_max + x.plasma_stored)*0.0005)*0.5)
 			else if(isHumanSynthStrict(A))
 				if(!(L.status_flags & PERMANENTLY_DEAD)) return
 				PTG += 50
