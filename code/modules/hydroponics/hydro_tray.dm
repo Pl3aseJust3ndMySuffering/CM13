@@ -50,6 +50,7 @@
 		"anti_toxin" =     -2,
 		"arithrazine" =    -1.5,
 		"carbon" =         -1,
+		"gisfulinate" =    -0.5,
 		"silicon" =        -0.5,
 		"chlorine" =        1.5,
 		"sacid" =           1.5,
@@ -131,6 +132,7 @@
 	var/global/list/mutagenic_reagents = list(
 		"ryetalyn" =  -8,
 		"arithrazine" = -6,
+		"gisfulinate" = -1,
 		"radium" =  8,
 		"mutagen" = 15
 		)

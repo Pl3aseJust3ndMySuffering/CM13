@@ -154,6 +154,19 @@
 	reagents.add_reagent("oxycodone", MED_REAGENTS_OVERDOSE-1)
 	update_icon()
 
+/obj/item/reagent_container/hypospray/autoinjector/gisfulinate
+	name = "gisfulinate autoinjector"
+	chemname = "gisfulinate"
+	desc = "An auto-injector loaded with doze of gisfulinate, aт uncommon side-effects blocker"
+	amount_per_transfer_from_this = 15
+	volume = 15
+	uses_left = 1
+	injectSFX = 'sound/items/air_release.ogg'
+	injectVOL = 70
+
+/obj/item/reagent_container/hypospray/autoinjector/gisfulinate/skillless
+	skilllock = SKILL_MEDICAL_DEFAULT
+
 /obj/item/reagent_container/hypospray/autoinjector/yautja
 	name = "unusual crystal"
 	chemname = "thwei"
