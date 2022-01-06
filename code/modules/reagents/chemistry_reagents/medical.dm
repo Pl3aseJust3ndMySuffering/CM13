@@ -203,6 +203,18 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_ANTITOXIC = 1, PROPERTY_BIOCIDIC = 1)
 
+/datum/reagent/medical/gisfulinate //Перекаверканное название органического растворителя
+	name = "Gisfulinate"
+	id = "gisfulinate"
+	description = "Anti-addictive chem. Or anti-alchohol. Fast metabolize."
+	reagent_state = LIQUID
+	color = "#1e2538"
+	custom_metabolism = AMOUNT_PER_TIME(1, 4 SECONDS)
+	overdose = REAGENTS_OVERDOSE/3
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/3
+	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_ANTITOXIC = 1, PROPERTY_ANTIADDICTIVE = 4, PROPERTY_FOCUSING = 1, PROPERTY_ANTIHALLUCINOGENIC = 8, PROPERTY_SEDATIVE = 1) //Дать антиг-галюны 8 и седативкную 1
+
 /datum/reagent/medical/russianred
 	name = "Russian Red"
 	id = "russianred"

@@ -402,10 +402,18 @@ FORENSIC SCANNER
 	matter = list("metal" = 50,"glass" = 50)
 
 	var/SP = 0
+/obj/item/device/bioanalyzer/examine(mob/user)
+	..()
+	get_data(user)
 
 /obj/item/device/bioanalyzer/attack_self(mob/user)
 	..()
+	get_data(user)
 
+/obj/item/device/bioanalyzer/proc/get_data(var/mob/user)
+	if(!isHumanSynthStrict(user))
+		to_chat(user, SPAN_NOTICE("You see nothing, but some strange symbols."))
+		return
 	to_chat(user, SPAN_NOTICE("Curruntly worth of research data points: [SP]."))
 	var/E
 	var/lg = length(bioscanned)
