@@ -317,6 +317,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Nanosplints", 50, /obj/item/stack/medical/splint/nano, null, VENDOR_ITEM_REGULAR),
 		list("Upgraded Defibrillator", 50, /obj/item/device/defibrillator/upgraded, null, VENDOR_ITEM_RECOMMENDED),
 		list("Incision Management System", 35, /obj/item/tool/surgery/scalpel/manager, null, VENDOR_ITEM_REGULAR),
+		list("Anti-addictive dose", 40, /obj/item/reagent_container/hypospray/autoinjector/gisfulinate/skillless, null, VENDOR_ITEM_REGULAR),
 
 		list("IMPLANTS", 0, null, null, null),
 		list("Nightvision Implant", 75, /obj/item/device/implanter/nvg, null, VENDOR_ITEM_REGULAR),
@@ -335,12 +336,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Signal scanner (WARNING)", 200, /obj/item/device/bioscan, null, VENDOR_ITEM_REGULAR),
 
 		list("AMMUNITION", 0, null, null, null),
-		list("Incendiary Buckshot Kit", 150, /obj/item/storage/box/shotgun/buckshot, null, VENDOR_ITEM_RECOMMENDED),
-		list("Incendiary Slug Kit", 100, /obj/item/storage/box/shotgun/slug, null, VENDOR_ITEM_REGULAR),
-		list("Incendiary Ammo Kit", 150, /obj/item/ammo_kit/incendiary, null, VENDOR_ITEM_RECOMMENDED),
-		list("Cluster Ammo Kit", 100, /obj/item/ammo_kit/cluster, null, VENDOR_ITEM_REGULAR),
-		list("Toxin Ammo Kit", 100, /obj/item/ammo_kit/toxin, null, VENDOR_ITEM_REGULAR),
-		list("Wall-Piercing Ammo Kit", 150, /obj/item/ammo_kit/penetrating, null, VENDOR_ITEM_REGULAR),
+		list("Incendiary Buckshot Kit", 200, /obj/item/storage/box/shotgun/buckshot, null, VENDOR_ITEM_RECOMMENDED),
+		list("Incendiary Slug Kit", 150, /obj/item/storage/box/shotgun/slug, null, VENDOR_ITEM_REGULAR),
+		list("Incendiary Ammo Kit", 250, /obj/item/ammo_kit/incendiary, null, VENDOR_ITEM_RECOMMENDED),
+		list("Cluster Ammo Kit", 150, /obj/item/ammo_kit/cluster, null, VENDOR_ITEM_REGULAR),
+		list("Toxin Ammo Kit", 150, /obj/item/ammo_kit/toxin, null, VENDOR_ITEM_REGULAR),
+		list("Wall-Piercing Ammo Kit", 350, /obj/item/ammo_kit/penetrating, null, VENDOR_ITEM_REGULAR),
 
 		list("INSTRUCTIONAL PAMPHLETS", 0, null, null, null),
 		list("Medic", 200, /obj/item/pamphlet/skill/medic, null, VENDOR_ITEM_RECOMMENDED),

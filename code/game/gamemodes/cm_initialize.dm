@@ -56,8 +56,8 @@ Additional game mode variables.
 	var/merc_starting_num 	= 0 //PMC clamp.
 	var/marine_starting_num = 0 //number of players not in something special
 	var/pred_current_num 	= 0 //How many are there now?
-	var/pred_per_players 	= 40 //Preds per player
-	var/pred_start_count	= 4 //The initial count of predators
+	var/pred_per_players 	= 20 //Preds per player
+	var/pred_start_count	= 0 //The initial count of predators
 
 	var/pred_additional_max = 0
 	var/pred_round_chance 	= 20 //%
