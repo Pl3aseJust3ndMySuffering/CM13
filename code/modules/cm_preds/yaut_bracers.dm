@@ -39,6 +39,76 @@
 	var/mob/living/carbon/human/owner //Pred spawned on, or thrall given to.
 	var/obj/item/clothing/gloves/yautja/linked_bracer //Bracer linked to this one (thrall or master).
 
+	actions_types = list(/datum/action/item_action/hunter/call_wristblades,/datum/action/item_action/hunter/call_cloak,/datum/action/item_action/hunter/call_caster,/datum/action/item_action/hunter/call_crystal,/datum/action/item_action/hunter/call_countdown)
+
+//Bracer's actions
+/datum/action/item_action/hunter/can_use_action()
+	var/mob/living/carbon/human/H = owner
+	if(istype(H) && !H.is_mob_incapacitated() && !H.lying && holder_item == H.gloves)
+		return TRUE
+
+//Wristblades action
+/datum/action/item_action/hunter/call_wristblades/New(var/mob/living/user, var/obj/item/holder)
+	..()
+	name = "Use Wrist Blades"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/obj/items/hunter/pred_gear.dmi', button, "wrist")
+	button.overlays += IMG
+/datum/action/item_action/hunter/call_wristblades/action_activate()
+	var/obj/item/clothing/gloves/yautja/hunter/B = holder_item
+	B.wristblades_internal()
+
+//Cloak action
+/datum/action/item_action/hunter/call_cloak/New(var/mob/living/user, var/obj/item/holder)
+	..()
+	name = "Toggle Cloaking Device"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/mob/mob.dmi', button, "hellnade")
+	button.overlays += IMG
+/datum/action/item_action/hunter/call_cloak/action_activate()
+	var/obj/item/clothing/gloves/yautja/hunter/B = holder_item
+	B.cloaker_internal()
+
+//Caster action
+/datum/action/item_action/hunter/call_caster/New(var/mob/living/user, var/obj/item/holder)
+	..()
+	name = "Use Plasma Caster"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/obj/items/hunter/pred_gear.dmi', button, "plasma")
+	button.overlays += IMG
+/datum/action/item_action/hunter/call_caster/action_activate()
+	var/obj/item/clothing/gloves/yautja/hunter/B = holder_item
+	B.caster_internal()
+
+//SD action
+/datum/action/item_action/hunter/call_countdown/New(var/mob/living/user, var/obj/item/holder)
+	..()
+	name = "Final Countdown (!)"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/obj/items/hunter/pred_gear.dmi', button, "bracer")
+	button.overlays += IMG
+/datum/action/item_action/hunter/call_countdown/action_activate()
+	var/obj/item/clothing/gloves/yautja/hunter/B = holder_item
+	B.activate_suicide_internal()
+
+//Crystal action
+/datum/action/item_action/hunter/call_crystal/New(var/mob/living/user, var/obj/item/holder)
+	..()
+	name = "Create Self-Heal Crystal"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/obj/items/hunter/pred_gear.dmi', button, "crystal1")
+	button.overlays += IMG
+/datum/action/item_action/hunter/call_crystal/action_activate()
+	var/obj/item/clothing/gloves/yautja/hunter/B = holder_item
+	B.injectors_internal()
+
+
+
 /obj/item/clothing/gloves/yautja/equipped(mob/user, slot)
 	. = ..()
 	if(slot == WEAR_HANDS)
