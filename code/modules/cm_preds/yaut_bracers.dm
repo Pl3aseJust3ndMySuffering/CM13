@@ -65,7 +65,7 @@
 	name = "Toggle Cloaking Device"
 	button.name = name
 	button.overlays.Cut()
-	var/image/IMG = image('icons/mob/mob.dmi', button, "hellnade")
+	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "invis")
 	button.overlays += IMG
 /datum/action/item_action/hunter/call_cloak/action_activate()
 	var/obj/item/clothing/gloves/yautja/hunter/B = holder_item
