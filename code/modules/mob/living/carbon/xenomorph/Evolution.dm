@@ -59,7 +59,7 @@
 			to_chat(src, SPAN_WARNING("There already is a living [hive.living_xeno_queen], Hive does not need internal strife."))
 			return
 
-	if(evolution_threshold && castepick != (XENO_CASTE_QUEEN && XENO_CASTE_HEIRESS)) //Does the caste have an evolution timer? Then check it
+	if(evolution_threshold && castepick != (XENO_CASTE_QUEEN || XENO_CASTE_HEIRESS)) //Does the caste have an evolution timer? Then check it
 		if(evolution_stored < evolution_threshold)
 			to_chat(src, SPAN_WARNING("You must wait before evolving. Currently at: [evolution_stored] / [evolution_threshold]."))
 			return
