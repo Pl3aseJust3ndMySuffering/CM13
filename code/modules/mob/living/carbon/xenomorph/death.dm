@@ -27,13 +27,14 @@
 		update_icons()
 
 	if(!is_admin_level(z)) //so xeno players don't get death messages from admin tests
-		if(isXenoQueen(src))
-			var/mob/living/carbon/Xenomorph/Queen/XQ = src
-			playsound(loc, 'sound/voice/alien_queen_died.ogg', 75, 0)
-			if(XQ.observed_xeno)
-				XQ.overwatch(XQ.observed_xeno, TRUE)
-			if(XQ.ovipositor)
-				XQ.dismount_ovipositor(TRUE)
+		if(isXenoQueen(src) || isXenoHeiress(src))
+			if(isXenoQueen(src))
+				var/mob/living/carbon/Xenomorph/Queen/XQ = src
+				playsound(loc, 'sound/voice/alien_queen_died.ogg', 75, 0)
+				if(XQ.observed_xeno)
+					XQ.overwatch(XQ.observed_xeno, TRUE)
+				if(XQ.ovipositor)
+					XQ.dismount_ovipositor(TRUE)
 
 			if(GLOB.hive_datum[hivenumber].stored_larva)
 				GLOB.hive_datum[hivenumber].stored_larva = round(GLOB.hive_datum[hivenumber].stored_larva * 0.5) //Lose half on dead queen
@@ -57,11 +58,15 @@
 					GLOB.hive_datum[hivenumber].hive_ui.update_pooled_larva()
 
 			if(hive && hive.living_xeno_queen == src)
-				xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!"),3, hivenumber)
+				xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the [isXenoQueen(src)? "Queen" : "Heiress"] has been slain! Vengeance!"),3, hivenumber)
 				hive.slashing_allowed = XENO_SLASH_ALLOWED
 				hive.set_living_xeno_queen(null)
 				//on the off chance there was somehow two queen alive
 				for(var/mob/living/carbon/Xenomorph/Queen/Q in GLOB.living_xeno_list)
+					if(!QDELETED(Q) && Q != src && Q.hivenumber == hivenumber)
+						hive.set_living_xeno_queen(Q)
+						break
+				for(var/mob/living/carbon/Xenomorph/Heiress/Q in GLOB.living_xeno_list)
 					if(!QDELETED(Q) && Q != src && Q.hivenumber == hivenumber)
 						hive.set_living_xeno_queen(Q)
 						break

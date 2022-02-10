@@ -85,9 +85,11 @@
 	if(hive.living_xeno_queen.hardcore)
 		to_chat(usr, SPAN_WARNING("No time for that, must KILL!"))
 		return
-	if(!hive.living_xeno_queen.ovipositor)
-		to_chat(usr, "You must be in Ovipositor to purchase Hive Mutators.")
-		return
+	if(isXenoQueen(hive.living_xeno_queen))
+		var/mob/living/carbon/Xenomorph/Queen/Q = hive.living_xeno_queen
+		if(!Q.ovipositor)
+			to_chat(usr, "You must be in Ovipositor to purchase Hive Mutators.")
+			return
 	. = ..()
 	if (. == TRUE && purchased_mutators.len)
 		var/m = purchased_mutators[purchased_mutators.len]

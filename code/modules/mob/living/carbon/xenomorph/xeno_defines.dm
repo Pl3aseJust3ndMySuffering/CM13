@@ -164,7 +164,7 @@
 	var/internal_faction
 
 	var/hivenumber = XENO_HIVE_NORMAL
-	var/mob/living/carbon/Xenomorph/Queen/living_xeno_queen
+	var/mob/living/carbon/Xenomorph/living_xeno_queen
 	var/egg_planting_range = 15
 	var/slashing_allowed = XENO_SLASH_ALLOWED //This initial var allows the queen to turn on or off slashing. Slashing off means harm intent does much less damage.
 	var/construction_allowed = NORMAL_XENO //Who can place construction nodes for special structures
@@ -175,6 +175,7 @@
 	var/ui_color = null // Color for hive status collapsible buttons and xeno count list
 	var/prefix = ""
 	var/queen_leader_limit = 2
+	var/xenos_per_queen = 8
 	var/list/open_xeno_leader_positions = list(1, 2) // Ordered list of xeno leader positions (indexes in xeno_leader_list) that are not occupied
 	var/list/xeno_leader_list[2] // Ordered list (i.e. index n holds the nth xeno leader)
 	var/stored_larva = 0
@@ -267,7 +268,7 @@
 		return
 
 	// Can only have one queen.
-	if(isXenoQueen(X))
+	if(isXenoQueen(X) || isXenoHeiress(X))
 		if(!living_xeno_queen && !is_admin_level(X.z)) // Don't consider xenos in admin level
 			set_living_xeno_queen(X)
 
@@ -299,13 +300,18 @@
 	if(!(X in totalXenos))
 		return
 
-	if(isXenoQueen(X))
+	if(isXenoQueen(X) || isXenoHeiress(X))
 		if(living_xeno_queen == X)
-			var/mob/living/carbon/Xenomorph/Queen/next_queen
+			var/mob/living/carbon/Xenomorph/next_queen
 			for(var/mob/living/carbon/Xenomorph/Queen/Q in totalXenos)
 				if(!is_admin_level(Q.z))
 					next_queen = Q
 					break
+			if(!next_queen)
+				for(var/mob/living/carbon/Xenomorph/Heiress/H in totalXenos)
+					if(!is_admin_level(H.z))
+						next_queen = H
+						break
 
 			set_living_xeno_queen(next_queen) // either null or a queen
 
@@ -325,7 +331,7 @@
 		hive_ui.update_xeno_counts()
 		hive_ui.xeno_removed(X)
 
-/datum/hive_status/proc/set_living_xeno_queen(var/mob/living/carbon/Xenomorph/Queen/M)
+/datum/hive_status/proc/set_living_xeno_queen(var/mob/living/carbon/Xenomorph/M)
 	if(M == null)
 		mutators.reset_mutators()
 		SStracking.delete_leader("hive_[hivenumber]")
@@ -659,8 +665,10 @@
 	if(!istype(living_xeno_queen))
 		return TRUE // xenos already dicked without queen. Let them plant whereever
 
-	if(!living_xeno_queen.ovipositor)
-		return FALSE // ovid queen only
+	if(isXenoQueen(living_xeno_queen))
+		var/mob/living/carbon/Xenomorph/Queen/Q = living_xeno_queen
+		if(!Q.ovipositor)
+			return FALSE // ovid queen only
 
 	return get_dist(living_xeno_queen, T) <= egg_planting_range
 

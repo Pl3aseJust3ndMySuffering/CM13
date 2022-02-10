@@ -14,6 +14,7 @@
 #define isXenoLarva(A) (istype(A, /mob/living/carbon/Xenomorph/Larva))
 #define isXenoLarvaStrict(A) (isXenoLarva(A) && !istype(A, /mob/living/carbon/Xenomorph/Larva/predalien))
 #define isXenoPraetorian(A) (istype(A, /mob/living/carbon/Xenomorph/Praetorian))
+#define isXenoHeiress(A) (istype(A, /mob/living/carbon/Xenomorph/Heiress))
 #define isXenoQueen(A) (istype(A, /mob/living/carbon/Xenomorph/Queen))
 #define isXenoQueenLeadingHive(A) (isXenoQueen(A) && A?:hive?:living_xeno_queen == A)
 #define isXenoRavager(A) (istype(A, /mob/living/carbon/Xenomorph/Ravager))

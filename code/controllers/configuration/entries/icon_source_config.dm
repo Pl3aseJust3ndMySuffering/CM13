@@ -28,6 +28,9 @@
 /datum/config_entry/string/alien_queen_ovipositor
 	config_entry_value = "icons/mob/hostiles/Ovipositor.dmi"
 
+/datum/config_entry/string/alien_heiress
+	config_entry_value = "icons/mob/hostiles/heiress.dmi"
+
 /datum/config_entry/string/alien_sentinel
 	config_entry_value = "icons/mob/hostiles/sentinel.dmi"
 

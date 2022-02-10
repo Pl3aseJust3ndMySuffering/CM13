@@ -26,10 +26,12 @@
 	. = ..()
 	if(!.)
 		return
-	if(!hive.living_xeno_queen?.ovipositor)
-		to_chat(M, SPAN_XENOWARNING("The Queen must be on her ovipositor to apply this tech!"))
-		return FALSE
-
+	if(hive.living_xeno_queen && isXenoQueen(hive.living_xeno_queen))
+		var/mob/living/carbon/Xenomorph/Queen/Q = hive.living_xeno_queen
+		if(!Q.ovipositor)
+			to_chat(M, SPAN_XENOWARNING("The Queen must be on her ovipositor to apply this tech!"))
+			return FALSE
+	else to_chat(M, SPAN_XENOWARNING("It must be done by Queen"))
 /datum/tech/xeno/powerup/revive/apply_powerup(mob/living/carbon/Xenomorph/target)
 	var/turf/deployment_turf = get_turf(target)
 

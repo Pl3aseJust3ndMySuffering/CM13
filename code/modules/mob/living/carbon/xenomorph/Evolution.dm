@@ -25,7 +25,7 @@
 	if (!evolve_checks())
 		return
 
-	if((!hive.living_xeno_queen) && castepick != XENO_CASTE_QUEEN && !isXenoLarva(src) && !hive.allow_no_queen_actions)
+	if((!hive.living_xeno_queen) && castepick != (XENO_CASTE_QUEEN || XENO_CASTE_HEIRESS) && !isXenoLarva(src) && !hive.allow_no_queen_actions)
 		to_chat(src, SPAN_WARNING("The Hive is shaken by the death of the last Queen. You can't find the strength to evolve."))
 		return
 
@@ -34,22 +34,32 @@
 		return
 
 	if(castepick == XENO_CASTE_QUEEN) //Special case for dealing with queenae
-		if(!hardcore)
-			if(SSticker.mode && hive.xeno_queen_timer > world.time)
-				to_chat(src, SPAN_WARNING("You must wait about [DisplayTimeText(hive.xeno_queen_timer - world.time, 1)] for the hive to recover from the previous Queen's death."))
-				return
 
-			if(plasma_stored >= 500)
-				if(hive.living_xeno_queen)
-					to_chat(src, SPAN_WARNING("There already is a living Queen."))
-					return
-			else
-				to_chat(src, SPAN_WARNING("You require more plasma! Currently at: [plasma_stored] / 500."))
-				return
-		else
+		if(hardcore)
 			to_chat(src, SPAN_WARNING("Nuh-uhh."))
 			return
-	if(evolution_threshold && castepick != XENO_CASTE_QUEEN) //Does the caste have an evolution timer? Then check it
+		if(SSticker.mode && hive.xeno_queen_timer > world.time)
+			to_chat(src, SPAN_WARNING("You must wait about [DisplayTimeText(hive.xeno_queen_timer - world.time, 1)] for the hive to recover from the previous Queen's death."))
+			return
+		if(hive.living_xeno_queen != null)// && caste_type != XENO_CASTE_HEIRESS)
+			to_chat(src, SPAN_WARNING("There already is a living [hive.living_xeno_queen]."))
+			return
+		if(plasma_stored < 500)
+			to_chat(src, SPAN_WARNING("You require more plasma! Currently at: [plasma_stored] / 500."))
+			return
+		/*if(length(hive.totalXenos) < hive.xenos_per_queen)
+			to_chat(src, SPAN_WARNING("The hivemind is too weak to sustain a Queen. Gather more xenos. [hive.xenos_per_queen] are required."))
+			return FALSE*/
+
+	if(castepick == XENO_CASTE_HEIRESS) //Heiress
+		/*if(length(hive.totalXenos[/mob/living/carbon/Xenomorph/Heiress]))
+			to_chat(src, SPAN_WARNING("There already is a living Heiress. The Hive does not need internal strife"))
+			return*/
+		if(hive.living_xeno_queen)
+			to_chat(src, SPAN_WARNING("There already is a living [hive.living_xeno_queen], Hive does not need internal strife."))
+			return
+
+	if(evolution_threshold && castepick != (XENO_CASTE_QUEEN && XENO_CASTE_HEIRESS)) //Does the caste have an evolution timer? Then check it
 		if(evolution_stored < evolution_threshold)
 			to_chat(src, SPAN_WARNING("You must wait before evolving. Currently at: [evolution_stored] / [evolution_threshold]."))
 			return
@@ -102,6 +112,8 @@
 			M = /mob/living/carbon/Xenomorph/Defender
 		if(XENO_CASTE_QUEEN)
 			M = /mob/living/carbon/Xenomorph/Queen
+		if(XENO_CASTE_HEIRESS)
+			M = /mob/living/carbon/Xenomorph/Heiress
 		if(XENO_CASTE_CRUSHER)
 			M = /mob/living/carbon/Xenomorph/Crusher
 		if(XENO_CASTE_BOILER)
@@ -131,11 +143,11 @@
 
 	if(!isturf(loc)) //qdel'd or moved into something
 		return
-	if(castepick == XENO_CASTE_QUEEN) //Do another check after the tick.
+	if(castepick == (XENO_CASTE_QUEEN || XENO_CASTE_HEIRESS)) //Do another check after the tick.
 		if(jobban_isbanned(src, XENO_CASTE_QUEEN))
 			to_chat(src, SPAN_WARNING("You are jobbanned from the Queen role."))
 			return
-		if(hive.living_xeno_queen)
+		if(hive.living_xeno_queen && hive.living_xeno_queen != src)
 			to_chat(src, SPAN_WARNING("There already is a Queen."))
 			return
 		if(!hive.allow_queen_evolve)
@@ -367,10 +379,10 @@
 
 	var/totalXenos = length(hive.totalXenos) + pooled_factor
 
-	if(tier == 1 && (((used_tier_2_slots + used_tier_3_slots) / totalXenos) * hive.tier_slot_multiplier) >= 0.5 && castepick != XENO_CASTE_QUEEN)
+	if(tier == 1 && (((used_tier_2_slots + used_tier_3_slots) / totalXenos) * hive.tier_slot_multiplier) >= 0.5 && castepick != (XENO_CASTE_QUEEN && XENO_CASTE_HEIRESS))
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 2, wait for either more aliens to be born or someone to die."))
 		return FALSE
-	else if(tier == 2 && ((used_tier_3_slots / length(hive.totalXenos)) * hive.tier_slot_multiplier) >= 0.20 && castepick != XENO_CASTE_QUEEN)
+	else if(tier == 2 && ((used_tier_3_slots / length(hive.totalXenos)) * hive.tier_slot_multiplier) >= 0.20 && castepick != (XENO_CASTE_QUEEN && XENO_CASTE_HEIRESS))
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 3, wait for either more aliens to be born or someone to die."))
 		return FALSE
 	else if(hive.allow_queen_evolve && !hive.living_xeno_queen && potential_queens == 1 && isXenoLarva(src) && castepick != XENO_CASTE_DRONE)

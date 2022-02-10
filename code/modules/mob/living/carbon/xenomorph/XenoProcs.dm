@@ -64,8 +64,10 @@
 		if(hive && !hive.allow_no_queen_actions)
 			if(!hive.living_xeno_queen)
 				evolve_progress += " (NO QUEEN)"
-			else if(!(hive.living_xeno_queen.ovipositor || hive.evolution_without_ovipositor))
-				evolve_progress += " (NO OVIPOSITOR)"
+			else if(isXenoQueen(hive.living_xeno_queen) && !hive.evolution_without_ovipositor)
+				var/mob/living/carbon/Xenomorph/Queen/Q = hive.living_xeno_queen
+				if(!Q.ovipositor)
+					evolve_progress += " (NO OVIPOSITOR)"
 
 	if(evolve_progress)
 		. += "Evolve Progress: [evolve_progress]"

@@ -121,6 +121,11 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	  color = "purple"
 	),
 	list(
+	  name = XENO_CASTE_HEIRESS,
+	  key = /mob/living/carbon/Xenomorph/Heiress,
+	  color = "purple"
+	),
+	list(
 	  name = XENO_CASTE_PREDALIEN,
 	  key = /mob/living/carbon/Xenomorph/Predalien,
 	  color = "purple"
