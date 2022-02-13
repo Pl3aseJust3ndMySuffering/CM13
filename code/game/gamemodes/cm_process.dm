@@ -67,7 +67,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 			M = X.current
 			if(!M || !M.loc)
 				M = X.original
-			if(M && M.loc && isXenoQueen(M) && M.stat != DEAD) // Dead queens handled separately
+			if(M && M.loc && (isXenoQueen(M) || isXenoHeiress(M)) && M.stat != DEAD) // Dead queens handled separately
 				dat += "<br>[X.key] was [M] [SPAN_BOLDNOTICE("(SURVIVED)")]"
 
 		to_world("[dat]")

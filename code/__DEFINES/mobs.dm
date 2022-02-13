@@ -289,6 +289,9 @@
 // Queen strain flags
 #define QUEEN_NORMAL		"Normal"
 
+// Heiress strain flags
+#define HEIRESS_NORMAL		"Normal"
+
 // Drone strain flags
 #define DRONE_NORMAL		"Normal"
 #define DRONE_HEALER		"Healer"

@@ -442,7 +442,7 @@ FORENSIC SCANNER
 				to_chat(user, SPAN_DANGER("RnD has an interest in this foreign corpse's data! They awarded you with additional 500 points!"))
 			else if(isXeno(A))
 				var/mob/living/carbon/Xenomorph/x = A
-				if(isXenoQueen(x))
+				if(isXenoQueen(x) || isXenoHeiress(x))
 					PTG += 600
 					to_chat(user, SPAN_DANGER("RnD has a big interest in this corpse's data! They awarded you with additional 600 points!"))
 				PTG += 50 * ((x.tier*x.tier + x.mob_size*0.3 + x.maxHealth*0.005 + (x.plasma_max + x.plasma_stored)*0.0005)*0.5)

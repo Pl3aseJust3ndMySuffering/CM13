@@ -715,7 +715,7 @@
 		L.update_icons() // larva renaming done differently
 	else
 		generate_name()
-	if(istype(src, /mob/living/carbon/Xenomorph/Queen))
+	if(istype(src, /mob/living/carbon/Xenomorph/Queen) || istype(src, /mob/living/carbon/Xenomorph/Heiress))
 		update_living_queens()
 
 	recalculate_everything()

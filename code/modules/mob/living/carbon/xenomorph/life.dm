@@ -42,8 +42,14 @@
 		return
 	var/progress_amount = 1
 	if(SSxevolution)
-		progress_amount = SSxevolution.get_evolution_boost_power(hive.hivenumber)
-	var/ovipositor_check = (hive.allow_no_queen_actions || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor))
+		progress_amount = SSxevolution.get_evolution_boost_power(hive.hivenumber) * (istype(hive.living_xeno_queen,/mob/living/carbon/Xenomorph/Heiress)? 0.5 : 1)
+	var/queen_check = 0
+	if(hive.living_xeno_queen)
+		if(isXenoQueen(hive.living_xeno_queen))
+			var/mob/living/carbon/Xenomorph/Queen/Q = hive.living_xeno_queen
+			queen_check = Q.ovipositor
+		else queen_check = isXenoHeiress(hive.living_xeno_queen)
+	var/ovipositor_check = (hive.allow_no_queen_actions || hive.evolution_without_ovipositor || queen_check)
 	if(caste && caste.evolution_allowed && evolution_stored < evolution_threshold && ovipositor_check)
 		evolution_stored = min(evolution_stored + progress_amount, evolution_threshold)
 		if(evolution_stored >= evolution_threshold - 1)
@@ -110,7 +116,7 @@
 						Z.recovery_new = aura_strength
 
 
-	if(hive && hive.living_xeno_queen && hive.living_xeno_queen.loc.z == loc.z) //Same Z-level as the Queen!
+	if(hive && hive.living_xeno_queen && isXenoQueen(hive.living_xeno_queen) && hive.living_xeno_queen.loc.z == loc.z) //Same Z-level as the Queen!
 		if(leader_current_aura && !stat)
 			var/pheromone_range = round(6 + leader_aura_strength * 2)
 			for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, src)) //Goes from 7 for Young Drone to 16 for Ancient Queen
@@ -423,7 +429,7 @@ updatehealth()
 		QL.icon_state = "trackoff"
 		return
 
-	if(tracking_atom.loc.z != loc.z || get_dist(src, tracking_atom) < 1 || src == tracking_atom)
+	if(tracking_atom.loc?.z != loc.z || get_dist(src, tracking_atom) < 1 || src == tracking_atom)
 		QL.icon_state = "trackondirect"
 	else
 		var/area/A = get_area(loc)

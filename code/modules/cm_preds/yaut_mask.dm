@@ -34,6 +34,7 @@
 	unacidable = TRUE
 	time_to_unequip = 20
 	anti_hug = 5
+	actions_types = list(/datum/action/item_action/call_vision,/datum/action/item_action/call_zoom)
 
 	var/thrall = FALSE//Used to affect icon generation.
 
@@ -152,6 +153,57 @@
 		add_vision(user)
 	..()
 
+//Visor's actions
+/datum/action/item_action/call_vision/New(var/mob/living/user, var/obj/item/holder)
+	..()
+	name = "Toggle Mask Visors"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/obj/items/hunter/pred_gear.dmi', button, "pred_mask2_ebony")
+	button.overlays += IMG
+
+/datum/action/item_action/call_vision/can_use_action()
+	var/mob/living/carbon/human/H = owner
+	if(istype(H) && !H.is_mob_incapacitated() && !H.lying && holder_item == H.wear_mask)
+		return TRUE
+
+/datum/action/item_action/call_vision/action_activate()
+	var/obj/item/clothing/mask/gas/yautja/B = holder_item
+	if(!usr || usr.stat)
+		return
+	var/mob/living/carbon/human/M = usr
+	if(!istype(M))
+		return
+	if(!HAS_TRAIT(M, TRAIT_YAUTJA_TECH))
+		to_chat(M, SPAN_WARNING("You have no idea how to work these things!"))
+		return
+
+	B.current_goggles++
+	if(istype(B, /obj/item/clothing/mask/gas/yautja/hunter))
+		if(B.current_goggles > 3) B.current_goggles = 0
+	else
+		if(B.current_goggles > 1) B.current_goggles = 0
+	B.add_vision(usr)
+
+//Visor's actions
+/datum/action/item_action/call_zoom/New(var/mob/living/user, var/obj/item/holder)
+	..()
+	name = "Toggle Mask Zoom"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/obj/items/hunter/pred_gear.dmi', button, "pred_mask4_bronze")
+	button.overlays += IMG
+
+/datum/action/item_action/call_zoom/can_use_action()
+	var/mob/living/carbon/human/H = owner
+	if(istype(H) && !H.is_mob_incapacitated() && !H.lying && holder_item == H.wear_mask)
+		return TRUE
+
+/datum/action/item_action/call_zoom/action_activate()
+	if(!usr || usr.stat)
+		return
+	var/obj/item/clothing/mask/gas/yautja/B = holder_item
+	B.toggle_zoom()
 
 
 /obj/item/clothing/mask/gas/yautja/thrall

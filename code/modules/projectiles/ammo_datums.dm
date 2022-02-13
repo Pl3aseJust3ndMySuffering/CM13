@@ -2379,7 +2379,7 @@
 /datum/ammo/xeno/toxin/burst/on_near_target(turf/T, obj/item/projectile/P)
 	return neuro_flak(T, P, neuro_callback, effect_power, FALSE, 1)
 
-/*datum/ammo/xeno/sticky
+/datum/ammo/xeno/sticky
 	name = "sticky resin spit"
 	icon_state = "sticky"
 	ping = null
@@ -2417,7 +2417,7 @@
 		if(O.density && !(O.flags_atom & ON_BORDER))
 			return
 
-	new /obj/effect/alien/resin/sticky/thin(T) */
+	new /obj/effect/alien/resin/sticky/thin(T)
 
 /datum/ammo/xeno/acid
 	name = "acid spit"

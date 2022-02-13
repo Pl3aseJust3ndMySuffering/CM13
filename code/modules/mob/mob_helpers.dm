@@ -147,10 +147,10 @@ proc/slur(phrase)
 			if(lowertext(newletter)=="s")	newletter="ch"
 			if(lowertext(newletter)=="a")	newletter="ah"
 			if(lowertext(newletter)=="c")	newletter="k"
-		switch(rand(1,15))
-			if(1,3,5,8)	newletter="[lowertext(newletter)]"
-			if(2,4,6,15)	newletter="[uppertext(newletter)]"
-			if(7)	newletter+="'"
+		switch(rand(1,9))
+			if(1,3,5,7)	newletter="[lowertext(newletter)]"
+			if(2,4,6,8)	newletter="[uppertext(newletter)]"
+			if(9)	newletter+="'"
 			//if(9,10)	newletter="<b>[newletter]</b>"
 			//if(11,12)	newletter="<big>[newletter]</big>"
 			//if(13)	newletter="<small>[newletter]</small>"
@@ -408,7 +408,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 			if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_EXPERT))
 				return 0.6 //Synths are 40% faster. In the same conditions they work almost twice as quickly, and can perform surgeries in rough conditions or with improvised tools at full speed.
 			if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_TRAINED))
-				return 1 			
+				return 1
 			else if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
 				return 1.2 //Medic/nurse.
 		//if(SKILL_RESEARCH)

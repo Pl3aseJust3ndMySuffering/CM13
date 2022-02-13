@@ -193,6 +193,8 @@
 			if("burrower")			transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Burrower , null, null, delmob )
 			if("crusher")			transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Crusher , null, null, delmob )
 			if("queen")				transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Queen , null, null, delmob )
+			if("heiress")			transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Heiress , null, null, delmob )
+
 			if("predalien")			transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Predalien , null, null, delmob )
 
 			if("human")				transformed = M.change_mob_type( /mob/living/carbon/human , null, null, delmob, href_list["species"])

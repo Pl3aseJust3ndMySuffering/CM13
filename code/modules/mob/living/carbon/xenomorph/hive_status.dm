@@ -39,6 +39,7 @@
 		SStgui.update_uis(src)
 
 	xeno_counts[1] -= "Queen" // don't show queen in the amount of xenos
+	xeno_counts[1] -= "Heiress" // also don't show heiress in the amount of xenos
 
 	// Also update the amount of T2/T3 slots
 	tier_slots = assoc_hive.get_tier_slots()
