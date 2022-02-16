@@ -467,12 +467,13 @@ var/const/MAX_SAVE_SLOTS = 10
 		dat += "<b>Yautja whitelist status:</b> <a href='?_src_=prefs;preference=yautja_status;task=input'>[yautja_status]</a><br>"
 		dat += "</div>"
 
-	dat += "<div id='column3'>"
-	dat += "<h2><b><u>Synthetic Settings:</u></b></h2>"
-	dat += "<b>Synthetic name:</b> <a href='?_src_=prefs;preference=synth_name;task=input'>[synthetic_name]</a><br>"
-	dat += "<b>Synthetic Type:</b> <a href='?_src_=prefs;preference=synth_type;task=input'>[synthetic_type]</a><br>"
-	dat += "<b>Synthetic whitelist status:</b> <a href='?_src_=prefs;preference=synth_status;task=input'>[synth_status]</a><br>"
-	dat += "</div>"
+	if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_SYNTHETIC)
+		dat += "<div id='column3'>"
+		dat += "<h2><b><u>Synthetic Settings:</u></b></h2>"
+		dat += "<b>Synthetic name:</b> <a href='?_src_=prefs;preference=synth_name;task=input'>[synthetic_name]</a><br>"
+		dat += "<b>Synthetic Type:</b> <a href='?_src_=prefs;preference=synth_type;task=input'>[synthetic_type]</a><br>"
+		dat += "<b>Synthetic whitelist status:</b> <a href='?_src_=prefs;preference=synth_status;task=input'>[synth_status]</a><br>"
+		dat += "</div>"
 
 	if(unlock_content)
 		dat += "<b>BYOND Membership Publicity:</b> <a href='?_src_=prefs;preference=publicity'><b>[(toggle_prefs & MEMBER_PUBLIC) ? "Public" : "Hidden"]</b></a><br>"
