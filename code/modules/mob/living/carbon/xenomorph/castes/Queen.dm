@@ -55,6 +55,11 @@
 					hive.living_xeno_queen = Q
 					xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hive.hivenumber)
 					continue outer_loop
+			for(var/mob/living/carbon/Xenomorph/Heiress/H in GLOB.living_xeno_list)
+				if(H.hivenumber == hive.hivenumber && !is_admin_level(H.z))
+					hive.living_xeno_queen = H
+					xeno_message(SPAN_XENOANNOUNCE("A new Heiress has risen to lead the Hive! Rejoice!"),3,hive.hivenumber)
+					continue outer_loop
 			hive.living_xeno_queen = null
 
 /mob/hologram/queen
