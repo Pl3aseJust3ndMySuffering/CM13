@@ -867,6 +867,8 @@
 #include "code\game\objects\items\devices\transfer_valve.dm"
 #include "code\game\objects\items\devices\walkman.dm"
 #include "code\game\objects\items\devices\whistle.dm"
+#include "code\game\objects\items\devices\motiondetector\motiondetector.dm"
+#include "code\game\objects\items\devices\motiondetector\pools.dm"
 #include "code\game\objects\items\devices\radio\beacon.dm"
 #include "code\game\objects\items\devices\radio\electropack.dm"
 #include "code\game\objects\items\devices\radio\encryptionkey.dm"
