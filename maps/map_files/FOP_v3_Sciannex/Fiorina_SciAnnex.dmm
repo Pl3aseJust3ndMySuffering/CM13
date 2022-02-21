@@ -1749,6 +1749,13 @@
 	tag = "icon-sterile_white (SOUTHWEST)"
 	},
 /area/fiorina/station/medbay)
+"aUX" = (
+/obj/structure/machinery/cm_vending/own_points/rnd_vendor,
+/turf/open/floor/prison{
+	icon_state = "darkpurplefull2";
+	tag = "icon-darkpurplefull2"
+	},
+/area/fiorina/station/research_cells)
 "aVd" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating/prison,
@@ -9480,6 +9487,10 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/station/security)
+"fMo" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fiorina/tumor/fiberbush)
 "fMY" = (
 /obj/structure/reagent_dispensers/watertank{
 	layer = 2.5
@@ -10945,6 +10956,13 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/tumor/civres)
+"gGZ" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/tumor/fiberbush)
 "gHb" = (
 /obj/structure/prop/structure_lattice{
 	health = 300
@@ -14612,6 +14630,10 @@
 	tag = "icon-darkyellowfull2 (EAST)"
 	},
 /area/fiorina/lz/near_lzI)
+"iVs" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison,
+/area/fiorina/tumor/aux_engi)
 "iVv" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/space,
@@ -14650,6 +14672,10 @@
 	icon_state = "blue"
 	},
 /area/fiorina/tumor/servers)
+"iWM" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fiorina/tumor/civres)
 "iWW" = (
 /obj/structure/barricade/handrail/type_b,
 /turf/open/floor/prison,
@@ -15596,6 +15622,13 @@
 	icon_state = "whitegreen"
 	},
 /area/fiorina/station/medbay)
+"jwu" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/fiorina/tumor/civres)
 "jwK" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/lz/near_lzII)
@@ -17898,6 +17931,7 @@
 "kLX" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/phone,
+/obj/item/clothing/under/marine/rnd,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "sterile_white";
@@ -25809,6 +25843,10 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/ice/noweed,
 /area/fiorina/tumor/ice_lab)
+"pCf" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/civres)
 "pCF" = (
 /obj/structure/lz_sign/prison_sign,
 /turf/open/floor/prison,
@@ -26170,6 +26208,13 @@
 /obj/structure/bookcase,
 /turf/open/floor/carpet,
 /area/fiorina/station/civres_blue)
+"pNC" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/tumor/civres)
 "pNG" = (
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/open/floor/prison{
@@ -27440,6 +27485,13 @@
 /obj/structure/extinguisher_cabinet,
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/central_ring)
+"qAO" = (
+/obj/structure/machinery/cm_vending/own_points/rnd_vendor,
+/turf/open/floor/prison{
+	icon_state = "darkpurplefull2";
+	tag = "icon-darkpurplefull2"
+	},
+/area/fiorina/tumor/ice_lab)
 "qBh" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/toy/handcard/aceofspades,
@@ -28521,6 +28573,13 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med,
 /turf/closed/wall/prison,
 /area/fiorina/tumor/ice_lab)
+"rfm" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "greenfull"
+	},
+/area/fiorina/tumor/servers)
 "rfo" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
@@ -28960,6 +29019,13 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
+"rtJ" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "greenfull"
+	},
+/area/fiorina/tumor/civres)
 "rtM" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_29";
@@ -29071,6 +29137,10 @@
 	},
 /turf/open/floor/wood,
 /area/fiorina/station/park)
+"rwU" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fiorina/tumor/servers)
 "rxh" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
@@ -31279,6 +31349,14 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/station/security)
+"sSG" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison{
+	dir = 6;
+	icon_state = "darkpurple2";
+	tag = "icon-darkpurple2"
+	},
+/area/fiorina/tumor/servers)
 "sSJ" = (
 /obj/structure/inflatable/popped/door,
 /turf/open/floor/prison{
@@ -33700,6 +33778,13 @@
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
+"uoj" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/fiorina/tumor/civres)
 "upt" = (
 /obj/structure/platform,
 /turf/open/floor/prison,
@@ -34062,6 +34147,14 @@
 	icon_state = "yellow"
 	},
 /area/fiorina/station/lowsec)
+"uAO" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "kitchen";
+	tag = "icon-kitchen (SOUTHWEST)"
+	},
+/area/fiorina/tumor/civres)
 "uAX" = (
 /obj/effect/decal/hefa_cult_decals/d32,
 /turf/open/floor/prison/chapel_carpet{
@@ -35583,6 +35676,12 @@
 	icon_state = "greenblue"
 	},
 /area/fiorina/station/botany)
+"vyk" = (
+/obj/structure/machinery/cm_vending/own_points/rnd_vendor,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
 "vyu" = (
 /obj/item/clothing/suit/storage/hazardvest,
 /turf/open/floor/wood,
@@ -37829,6 +37928,13 @@
 	tag = "icon-cell_stripe (EAST)"
 	},
 /area/fiorina/tumor/servers)
+"wSf" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkbrown2"
+	},
+/area/fiorina/tumor/aux_engi)
 "wSm" = (
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzII)
@@ -42057,7 +42163,7 @@ qmd
 xFx
 diP
 kDO
-diP
+jwu
 qty
 diP
 qty
@@ -42065,7 +42171,7 @@ oOK
 sUl
 kVg
 aap
-aap
+rHr
 aap
 aap
 aap
@@ -42264,7 +42370,7 @@ dXG
 dIo
 hDx
 dXG
-bjx
+uoj
 dXG
 oVC
 lhQ
@@ -42907,7 +43013,7 @@ naW
 xHV
 omF
 lKd
-lKd
+uAO
 lKd
 xHV
 naW
@@ -43139,7 +43245,7 @@ aap
 aap
 qPb
 qPb
-aap
+rHr
 aap
 aap
 qPb
@@ -43323,7 +43429,7 @@ clu
 dXG
 dXG
 uVZ
-hDx
+pNC
 dXG
 qty
 xHV
@@ -43779,7 +43885,7 @@ pXH
 gwH
 gwH
 qPb
-qPb
+enH
 aap
 aap
 qPb
@@ -43965,7 +44071,7 @@ qty
 hDx
 dXG
 lKd
-lKd
+uAO
 lKd
 lKd
 xHV
@@ -43996,7 +44102,7 @@ lso
 aap
 aap
 tQn
-lso
+gGZ
 lso
 lso
 qPb
@@ -44169,7 +44275,7 @@ dXG
 rsz
 hDx
 whu
-whu
+iWM
 whu
 hDx
 qty
@@ -44194,7 +44300,7 @@ rOa
 kow
 aap
 qPb
-aap
+rHr
 aap
 kow
 bQM
@@ -44801,7 +44907,7 @@ hDx
 hDx
 hDx
 dXG
-dXG
+pCf
 dXG
 hDx
 xHV
@@ -45059,7 +45165,7 @@ pXH
 qPb
 lso
 lso
-aap
+rHr
 qPb
 pXH
 gwH
@@ -45217,11 +45323,11 @@ dIo
 wJa
 lLe
 dXG
-qty
+rtJ
 lLe
 dXG
 dXG
-hDx
+pNC
 hDx
 hDx
 xHV
@@ -45239,7 +45345,7 @@ naW
 naW
 naW
 uZD
-lKd
+uAO
 lKd
 wAl
 xHV
@@ -45495,7 +45601,7 @@ dwQ
 dwQ
 lso
 dwQ
-dwQ
+fMo
 lso
 dwQ
 dwQ
@@ -45511,7 +45617,7 @@ hjP
 hjP
 hjP
 hjP
-hjP
+iVs
 knh
 pGi
 pGi
@@ -45713,7 +45819,7 @@ uXn
 lso
 lso
 lso
-lso
+gGZ
 ogM
 sVP
 gCX
@@ -45727,7 +45833,7 @@ hjP
 knh
 rGq
 pGi
-sJT
+awF
 pGi
 hjP
 oVn
@@ -45910,12 +46016,12 @@ qPb
 qPb
 qPb
 uXn
-qPb
+enH
 qPb
 fpB
 aap
 aap
-lso
+gGZ
 kIF
 lso
 lso
@@ -46070,7 +46176,7 @@ xHV
 xHV
 dIo
 qty
-qty
+rtJ
 qty
 rsz
 xHV
@@ -46088,35 +46194,35 @@ qty
 diP
 qty
 diP
-qty
+rtJ
 diP
 sUl
 qPb
 qPb
 rNc
 qPb
+enH
 qPb
 qPb
 qPb
 qPb
 qPb
+qPb
+rHr
+qPb
+qPb
+qPb
+qPb
+qPb
+enH
+enH
 qPb
 qPb
 aap
-qPb
-qPb
-qPb
-qPb
-qPb
-qPb
-qPb
-qPb
-qPb
 aap
 aap
 aap
-aap
-aap
+rHr
 aap
 qPb
 qPb
@@ -46142,7 +46248,7 @@ ogM
 sVP
 piL
 dXz
-dXz
+qzW
 dXz
 dXz
 dXz
@@ -46358,7 +46464,7 @@ bEn
 bEn
 bEn
 bEn
-bEn
+wSf
 ycn
 gCX
 rZP
@@ -46788,7 +46894,7 @@ gCX
 rZP
 jlk
 jlk
-pGi
+ezb
 bfF
 rGq
 rZP
@@ -46917,7 +47023,7 @@ dIo
 dIo
 dIo
 hDx
-dXG
+pCf
 qty
 hDx
 xHV
@@ -47180,7 +47286,7 @@ pXH
 pXH
 qPb
 qPb
-aap
+rHr
 aap
 aap
 aap
@@ -47550,7 +47656,7 @@ dXG
 qty
 dXG
 qXM
-dXG
+pCf
 lLe
 dXG
 dXG
@@ -47747,17 +47853,17 @@ qty
 qty
 qty
 dXG
-hDx
+pNC
 fBP
 hDx
 fBP
 rsz
 dXG
-dXG
+pCf
 lbt
 dXG
 dXG
-dXG
+pCf
 dXG
 dXG
 dXG
@@ -48060,7 +48166,7 @@ gCX
 rGq
 knh
 rGq
-rGq
+gJu
 bfF
 rGq
 jlk
@@ -48165,7 +48271,7 @@ fLq
 efz
 fLq
 efz
-dXG
+pCf
 dXG
 dXG
 dXG
@@ -48372,7 +48478,7 @@ ege
 mjx
 mjx
 ege
-mjx
+rwU
 mjx
 ege
 mjx
@@ -48580,7 +48686,7 @@ wVK
 uFX
 lwK
 mjx
-efz
+rfm
 eQR
 efz
 eQR
@@ -49425,7 +49531,7 @@ hPW
 lwK
 vco
 wVK
-uFX
+sSG
 lwK
 fGb
 hPW
@@ -49845,7 +49951,7 @@ bQM
 aWV
 hPW
 gEF
-hPW
+vjT
 lwK
 wNw
 ykT
@@ -62556,7 +62662,7 @@ agi
 fGb
 fGb
 jXz
-rPh
+qAO
 rPh
 rPh
 rPh
@@ -71797,7 +71903,7 @@ fnB
 tHs
 uGY
 tHs
-tHs
+vyk
 pCZ
 uGY
 hLz
@@ -78916,7 +79022,7 @@ cKa
 xMR
 lSY
 iZV
-vJD
+aUX
 cKa
 nmQ
 wef
