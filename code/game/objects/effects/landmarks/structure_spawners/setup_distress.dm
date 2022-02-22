@@ -9,6 +9,12 @@
 	path_to_spawn = /turf/closed/wall/resin
 	is_turf = TRUE
 
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall/thick
+	name = "Distress Xeno thick wall spawner"
+	icon_state = "twall"
+	path_to_spawn = /turf/closed/wall/resin/thick
+	is_turf = TRUE
+
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane
 	name = "Distress Xeno membrane spawner"
 	icon_state = "membrane"
@@ -24,6 +30,11 @@
 	name = "Distress Xeno nest spawner"
 	icon_state = "nest"
 	path_to_spawn = /obj/structure/bed/nest
+
+/obj/effect/landmark/structure_spawner/setup/distress/sticky
+	name = "Distress Xeno sticky spawner"
+	icon_state = "sticky"
+	path_to_spawn = /obj/effect/alien/resin/sticky
 
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node
 	name = "Distress Xeno weed node spawner"

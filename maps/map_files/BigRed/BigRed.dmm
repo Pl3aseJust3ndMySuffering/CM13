@@ -8020,6 +8020,9 @@
 	},
 /area/bigredv2/outside/medical)
 "auO" = (
+/obj/structure/machinery/cm_vending/own_points/rnd_vendor{
+	wrenchable = 0
+	},
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitegreen";
@@ -31976,6 +31979,15 @@
 	tag = "icon-mars_cave_6"
 	},
 /area/bigredv2/caves_lambda)
+"qRf" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/clothing/under/marine/rnd,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurple";
+	tag = "icon-whitepurple (EAST)"
+	},
+/area/bigredv2/caves/lambda/xenobiology)
 "qTu" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "viro"
@@ -32242,6 +32254,13 @@
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
+	},
+/area/bigredv2/caves_east)
+"soD" = (
+/obj/effect/landmark/structure_spawner/setup/distress/sticky,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_6";
+	tag = "icon-mars_cave_6"
 	},
 /area/bigredv2/caves_east)
 "sqj" = (
@@ -33253,6 +33272,13 @@
 	tag = "icon-mars_cave_14"
 	},
 /area/bigredv2/caves_north)
+"xej" = (
+/obj/effect/landmark/structure_spawner/setup/distress/sticky,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
+	},
+/area/bigredv2/caves_east)
 "xeN" = (
 /obj/effect/landmark/lv624/xeno_tunnel,
 /turf/open/mars_cave{
@@ -64138,12 +64164,12 @@ fjP
 kBn
 kBn
 ecK
+xej
 gCE
 gCE
 gCE
 gCE
-gCE
-gCE
+xej
 gCE
 gCE
 gCE
@@ -65011,7 +65037,7 @@ wWK
 gCE
 gCE
 gCE
-gCE
+xej
 gCE
 gCE
 qFY
@@ -65636,9 +65662,9 @@ aao
 aao
 aao
 gCE
-gCE
+xej
 rAs
-rAs
+soD
 rAs
 sfI
 gCE
@@ -65657,7 +65683,7 @@ gCE
 gCE
 gCE
 ecK
-gCE
+xej
 gCE
 gCE
 gCE
@@ -65855,7 +65881,7 @@ gCE
 gCE
 gCE
 gCE
-gCE
+xej
 gCE
 gCE
 rAs
@@ -65864,7 +65890,7 @@ gCE
 gCE
 gCE
 gCE
-gCE
+xej
 gCE
 gCE
 gCE
@@ -66507,7 +66533,7 @@ gCE
 gCE
 gCE
 ecK
-gCE
+xej
 gCE
 gCE
 aao
@@ -66735,7 +66761,7 @@ aao
 sfI
 gCE
 gCE
-gCE
+xej
 gCE
 aao
 aao
@@ -67157,7 +67183,7 @@ aao
 aao
 aao
 gCE
-gCE
+xej
 ecK
 gCE
 aao
@@ -67384,7 +67410,7 @@ aao
 aao
 gCE
 gCE
-gCE
+xej
 gpg
 gpg
 gpg
@@ -68029,7 +68055,7 @@ gCE
 gCE
 gCE
 ecK
-gCE
+xej
 gCE
 gCE
 gCE
@@ -73161,7 +73187,7 @@ amO
 afy
 amO
 aoJ
-afy
+qRf
 aqh
 adZ
 amk
