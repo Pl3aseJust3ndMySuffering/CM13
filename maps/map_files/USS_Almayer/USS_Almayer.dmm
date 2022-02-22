@@ -9508,8 +9508,6 @@
 	},
 /area/almayer/medical/morgue)
 "ayX" = (
-/obj/structure/surface/table/almayer,
-/obj/item/tool/extinguisher,
 /obj/structure/sign/safety/biolab{
 	pixel_y = 32
 	},
@@ -9517,6 +9515,7 @@
 	pixel_x = 15;
 	pixel_y = 32
 	},
+/obj/structure/machinery/cm_vending/own_points/rnd_vendor,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner";
@@ -77884,6 +77883,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/cm_vending/own_points/rnd_vendor,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
