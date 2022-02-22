@@ -416,8 +416,8 @@ Additional game mode variables.
 		if(!xeno_bypass_timer)
 			var/deathtime = world.time - xeno_candidate.timeofdeath
 			if(istype(xeno_candidate, /mob/new_player))
-				deathtime = 5 MINUTES //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
-			if(deathtime < 5 MINUTES && !check_client_rights(xeno_candidate.client, R_ADMIN, FALSE))
+				deathtime = 3 MINUTES //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
+			if(deathtime < 3 MINUTES && !check_client_rights(xeno_candidate.client, R_ADMIN, FALSE))
 				var/message = "You have been dead for [DisplayTimeText(deathtime)]."
 				message = SPAN_WARNING("[message]")
 				to_chat(xeno_candidate, message)
