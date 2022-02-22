@@ -14,6 +14,8 @@
 	var/datum/shape/rectangle/range_bounds
 	var/detector_range = 14
 	var/iff_signal = FACTION_MARINE
+	var/experimental = TRUE
+	var/iff_test = TRUE
 
 mob/var/tracker_position = null
 mob/var/current_detector = null
@@ -57,7 +59,7 @@ mob/var/current_detector = null
 			user.client.screen -= o //Remove all blips from the tracker, then..
 			qdel(o)	//Store all removed blips in the pool
 
-		var/turf/cur_turf = get_turf(src)
+		var/turf/cur_turf = get_turf(user)
 		if(!istype(cur_turf))
 			return
 		if(!range_bounds)
@@ -90,6 +92,15 @@ mob/var/current_detector = null
 		for(var/mob/hologram/queen/Q in GLOB.hologram_list)
 			if(Q.z != cur_turf.z || !(range_bounds.contains_atom(Q))) continue
 			detected += Q
+		if(!experimental)
+			for(var/mob/living/t in range(14,M))
+				if(t != M)
+					if(t.get_target_lock(iff_signal) && iff_test)
+						continue
+					t.tracker_position = t.loc
+				if((t.tracker_position != null) && (get_dist(t.tracker_position, t.loc) >= 1))
+					spawn(3) t.tracker_position = null
+					detected += t
 
 		if(detected.len>=1)
 			var/dist = 100 // this used below, to get sound tone for pinging.
