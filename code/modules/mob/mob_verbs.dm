@@ -131,7 +131,8 @@
 			pluralcheck = " [deathtimeminutes] minutes and"
 		var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
 		to_chat(usr, "You have been dead for[pluralcheck] [deathtimeseconds] seconds.")
-	if(deathtimeminutes < 6) return
+		if(deathtimeminutes < 6) return
+
 	if(alert("Are you sure you want to respawn?",,"Yes","No") != "Yes")
 		return
 
