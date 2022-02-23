@@ -12,8 +12,9 @@
 	var/detector_ping = 1
 	var/obj/detector_image = new()
 	var/datum/shape/rectangle/range_bounds
-	var/detector_range = 14
+	var/detector_range = 14 //In each side
 	var/iff_signal = FACTION_MARINE
+	var/force_check = FALSE //Less optimized, but uh
 
 mob/var/tracker_position = null
 mob/var/current_detector = null
@@ -57,7 +58,7 @@ mob/var/current_detector = null
 			user.client.screen -= o //Remove all blips from the tracker, then..
 			qdel(o)	//Store all removed blips in the pool
 
-		var/turf/cur_turf = get_turf(src)
+		var/turf/cur_turf = get_turf(user)
 		if(!istype(cur_turf))
 			return
 		if(!range_bounds)
@@ -69,32 +70,59 @@ mob/var/current_detector = null
 
 		var/list/ping_candidates = SSquadtree.players_in_range(range_bounds, cur_turf.z, QTREE_EXCLUDE_OBSERVER | QTREE_SCAN_MOBS)
 
-		sleep(3) //Amount of time to "check" for movement
-		for(var/mob/living/t in ping_candidates)
+		if(force_check) //JUST IN CASE
+			for(var/mob/living/t in range(14,M))
+				if(t != M)
+					if(istype(t, /mob/living/carbon/human))
+						var/mob/living/carbon/human/C = t
+						if(istype(C.wear_suit, /obj/item/clothing/suit/storage/marine))
+							continue
+						C.tracker_position = C.loc
+
+					else
+						t.tracker_position = t.loc
+
+			sleep(3) //Amount of time to "check" for movement
+			for(var/mob/living/t in range(14,M))
+				if((t.tracker_position != null) && (get_dist(t.tracker_position, t.loc) >= 1))
+					spawn(3) t.tracker_position = null
+					detected += t
+
+		for(var/mob/living/t in ping_candidates) //We found something...
 			if(t != M)
-				if(t.get_target_lock(iff_signal))
+				if(istype(t, /mob/living/carbon/human))
+					var/mob/living/carbon/human/C = t
+					if(istype(C.wear_suit, /obj/item/clothing/suit/storage/marine))
+						continue
+					C.tracker_position = C.loc
+
+				else
+					t.tracker_position = t.loc
+		sleep(3) //Amount of time to "check" for movement
+		for(var/mob/living/t in ping_candidates) //Enemy moves! Let's ping it!
+			if(t != M)
+				if(t.get_target_lock(iff_signal)) //Allies?
 					continue
-				t.tracker_position = t.loc
-			if((t.tracker_position != null) && (get_dist(t.tracker_position, t.loc) >= 1))
+				t.tracker_position = t.loc //Enemy found
+			if((t.tracker_position != null) && (get_dist(t.tracker_position, t.loc) >= 1)) //Is it still being? Is it moved?
 				spawn(3) t.tracker_position = null
 				detected += t
-		for(var/obj/structure/machinery/door/airlock/D in range(14,M))
+		for(var/obj/structure/machinery/door/airlock/D in range(14,M)) //Airlocks check
 			if(D.operating)
 				detected += D
-		for(var/obj/structure/mineral_door/D in range(14,M))
+		for(var/obj/structure/mineral_door/D in range(14,M)) //Doors check
 			if(D.isSwitchingStates)
 				detected += D
-		for(var/obj/item/clothing/mask/facehugger/F in range(14,M))
+		for(var/obj/item/clothing/mask/facehugger/F in range(14,M)) //Hugger check
 			if(!F.stat)
 				detected += F
-		for(var/mob/hologram/queen/Q in GLOB.hologram_list)
+		for(var/mob/hologram/queen/Q in GLOB.hologram_list) //Eye check
 			if(Q.z != cur_turf.z || !(range_bounds.contains_atom(Q))) continue
 			detected += Q
 
-		if(detected.len>=1)
+		if(detected.len>=1) //we found something
 			var/dist = 100 // this used below, to get sound tone for pinging.
-
-			for(var/atom/movable/t in detected)
+			for(var/atom/movable/t in detected) //Sanity check
 				if(get_dist(t, M) < dist)
 					dist = get_dist(t, M)
 				var/obj/Blip/o = PoolOrNew(/obj/Blip) // Get a blip from the blip pool
@@ -102,17 +130,17 @@ mob/var/current_detector = null
 				o.pixel_y = (t.y-M.y)*4-6 //-2 is a slight offset south and west
 				o.screen_loc = "detector:3:[o.pixel_x],3:[o.pixel_y]" // Make it appear on the radar map
 				user.client.screen += o // Add it to the radar
-				flick("blip", o)
-			detected = null
-			if(detector_ping)
+				flick("blip", o) //Add to radar
+			detected = null //No need in old data
+			if(detector_ping) //Is ping enabled by player?
 				playsound(src.loc, 'sound/items/newtick.ogg', 25) //If player isn't the only blip, play ping
 		playsound(src.loc, 'sound/items/scan.ogg', 15)
-		flick("", detector_image)
-		sleep(10)
-	active = 0
+		flick("", detector_image) //Add us
+		sleep(10) //Time to "recharge"
+	active = 0 //Off it
 	icon_state = "off"
-	user.current_detector = null
-	winshow(user, "detectorwindow", 0)
+	user.current_detector = null //We don't need it right now
+	winshow(user, "detectorwindow", 0) //May cause problems, but uh
 
 /obj/item/device/motion_radar/proc/ToggleDetector(mob/user)
 	if(winget(user,"detectorwindow","is-visible")=="true" && user.current_detector == src) //Checks if radar window is already open and if radar is assigned
