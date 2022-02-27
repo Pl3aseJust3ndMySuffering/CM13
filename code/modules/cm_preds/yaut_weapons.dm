@@ -705,6 +705,187 @@
 	sharp = IS_SHARP_ITEM_SIMPLE
 	attack_verb = list("attacked", "stabbed", "jabbed", "torn", "gored")
 
+/obj/item/weapon/melee/twohanded/yautja/glef
+	name = "glef"
+	desc = "Spear-shape weapon with two sharp blades from both sides of metallic pole. Mysterious writing is carved into the weapon."
+	icon_state = "glef"
+	item_state = "glef"
+	force = MELEE_FORCE_TIER_3
+	force_wielded = MELEE_FORCE_TIER_9
+	throwforce = MELEE_FORCE_TIER_6
+	embeddable = FALSE //so predators don't lose their glaive when thrown.
+	sharp = IS_SHARP_ITEM_BIG
+	flags_atom = FPRINT|CONDUCT
+	attack_verb = list("attacked", "stabbed", "jabbed", "torn", "gored")
+	attack_speed = 20 //Default is 7.
+	var/lunge
+	var/cur_lunge_cooldown
+	var/lunge_delay = 9 SECONDS
+	var/lunge_callbacks = null
+	var/mob/living/carbon/lunger
+	var/ability_name = "lunge"
+	var/distance = 3
+
+/obj/item/weapon/melee/twohanded/yautja/glef/attack(mob/living/target, mob/living/carbon/human/user)
+	if(lunge)
+		to_chat(user, SPAN_WARNING("You're a bit busy concentrating to hit something."))
+		return
+	. = ..()
+	if(!.)
+		return
+	if(isYautja(user) && isXeno(target))
+		var/mob/living/carbon/Xenomorph/X = target
+		X.interference = 30
+
+/obj/item/weapon/melee/twohanded/yautja/glef/IsShield()
+	return (flags_item & WIELDED) ? 1 : 0
+
+/obj/item/weapon/melee/twohanded/yautja/glef/Initialize(mapload, ...)
+	. = ..()
+	lunge_callbacks = list()
+	lunge_callbacks[/mob] = DYNAMIC(/mob/living/carbon/proc/lunged_mob_wrapper)
+	lunge_callbacks[/obj] = DYNAMIC(/mob/living/carbon/proc/lunged_obj_wrapper)
+	lunge_callbacks[/turf] = DYNAMIC(/mob/living/carbon/proc/lunged_turf_wrapper)
+
+/obj/item/weapon/melee/twohanded/yautja/glef/verb/use_unique_action()
+	set category = "Weapons"
+	set name = "Unique Action"
+	set desc = "Lunge forward with a spear"
+	set src in usr
+	unique_action(usr)
+
+/obj/item/weapon/melee/twohanded/yautja/glef/unique_action(mob/living/user)
+	if(cur_lunge_cooldown > world.time)
+		to_chat(user, SPAN_WARNING("You've attempted to [ability_name] too soon, you must wait a bit before regaining your focus."))
+		return
+	if(lunge)
+		to_chat(user, SPAN_WARNING("You're a bit busy concentrating to hit something."))
+		return
+	lunger = user
+	var/filt_color = COLOR_ORANGE
+	var/filt_alpha = 70
+	filt_color += num2text(filt_alpha, 2, 16)
+	user.add_filter("parry_sword", 1, list("type" = "outline", "color" = filt_color, "size" = 2))
+	addtimer(CALLBACK(src, .proc/remove_lunge), 3)
+
+	var/list/mods = params2list(lunger.client.mouse_params)
+	var/turf/A = params2turf(mods["screen-loc"], get_turf(lunger.client.eye), lunger.client)
+	var/mob/living/carbon/C = user
+
+	if(!A)
+		remove_lunge()
+		return //Deleted or something happened
+	if(A.layer >= FLY_LAYER)//anything above that shouldn't be pounceable (hud stuff)
+		remove_lunge()
+		return
+	if(!isturf(C.loc))
+		to_chat(C, SPAN_YAUTJABOLD("You can't [ability_name] from here!")) //Non-turf
+		remove_lunge()
+		return
+	if(C.legcuffed)
+		to_chat(C, SPAN_YAUTJABOLD("You can't [ability_name] with that thing on your leg!"))
+		remove_lunge()
+		return
+	A = get_turf(A)
+	lunge = TRUE
+	if(do_after(user, 0.4 SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_HOSTILE, user, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+			if(!do_after(user, 1.1 SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_HOSTILE, user, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+				var/wield_chance = 50 * max(1, user.skills.get_skill_level(SKILL_MELEE_WEAPONS))
+				if(!prob(wield_chance))
+					user.visible_message(SPAN_DANGER("[user] tries to hold \the [src] steadily but drops it!"),SPAN_DANGER("You focus on \the [src], attempting to hold it steadily, but its heavy weight makes you lose your grip!"))
+					user.hand ? user.drop_l_hand() : user.drop_r_hand()
+					remove_lunge()
+					return
+	else
+		remove_lunge()
+		return
+	if(!(flags_item & WIELDED)) //Not wielded, need extra time to lunge
+		if(!do_after(user, 0.4 SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_HOSTILE, user, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+			to_chat(C, SPAN_YAUTJABOLD("You stopped concentrating and lost momentum!"))
+			cur_lunge_cooldown = world.time + lunge_delay/4
+			remove_lunge()
+			return
+	C.visible_message(SPAN_YAUTJABOLD("\The [C] [ability_name]s!"), SPAN_YAUTJABOLD("You [ability_name]!"))
+	cur_lunge_cooldown = world.time + lunge_delay
+	lunge = FALSE
+
+	// ok so basically the way this code works is godawful
+	// what happens next is if we hit anything
+	// a callback occurs to either the mob_launch_collision or obj_launch_collision procs.
+	// those procs poll our action to see if we are 'pouncing'
+	var/datum/launch_metadata/LM = new()
+	LM.target = A
+	LM.range = distance
+	LM.speed = throw_speed
+	LM.thrower = C
+	LM.spin = FALSE
+	//LM.pass_flags = PASS_OVER_THROW_MOB
+	LM.collision_callbacks = lunge_callbacks //THIS WORKS AWFUL, BUT WORKS
+
+	C.launch_towards(LM) //Victim, distance, speed
+
+	return TRUE
+
+/obj/item/weapon/melee/twohanded/yautja/glef/proc/remove_lunge() //For callback
+	lunge = FALSE
+	lunger.remove_filter("parry_sword")
+
+/mob/living/carbon/proc/lunged_mob_wrapper(var/mob/living/L) //Mob that lunged on someone
+	var/obj/item/weapon/melee/twohanded/yautja/glef/A
+	if(l_hand && istype(l_hand, /obj/item/weapon/melee/twohanded/yautja/glef))
+		A = l_hand
+	else if(r_hand && istype(r_hand, /obj/item/weapon/melee/twohanded/yautja/glef))
+		A = r_hand
+	else return //Ye, only for glef
+
+	// Unconscious or dead, or not throwing but used pounce.
+	if(!istype(A.lunger) && A.lunger.is_mob_incapacitated() && A.lunger.lying)
+		return
+
+	var/mob/living/carbon/M = L
+	if(M.stat)
+		throwing = FALSE
+		return
+
+	visible_message(SPAN_DANGER("[src] [A.ability_name] onto [M]!"), SPAN_XENODANGER("You [A.ability_name] onto [M]!"), null, 5)
+
+	step_to(src, M)
+	A.attack(M,A.lunger)
+	A.attack(M,A.lunger)
+
+	throwing = FALSE //Reset throwing since something was hit.
+
+/mob/living/carbon/proc/lunged_obj_wrapper(var/obj/O) //Mob that lunged on something
+	var/obj/item/weapon/melee/twohanded/yautja/glef/A
+	if(l_hand && istype(l_hand, /obj/item/weapon/melee/twohanded/yautja/glef))
+		A = l_hand
+	else if(r_hand && istype(r_hand, /obj/item/weapon/melee/twohanded/yautja/glef))
+		A = r_hand
+	else return //Ye, only for glef
+
+	// Unconscious or dead, or not throwing but used pounce
+	if(!istype(A.lunger) && A.lunger.is_mob_incapacitated() && A.lunger.lying)
+		obj_launch_collision(O)
+		return
+	if(!istype(O, /obj/structure/surface/table) && !istype(O, /obj/structure/surface/rack))
+		O.hitby(src) //This resets throwing.
+
+
+/mob/living/carbon/proc/lunged_turf_wrapper(var/turf/T) //Mob that lunged on turf
+	if(!T.density)
+		for(var/mob/M in T)
+			if(M != src)
+				lunged_mob_wrapper(M)
+				break
+	else if(istype(T,/obj/structure))
+		for(var/obj/structure/S in T)
+			lunged_obj_wrapper(S)
+			break
+	else
+		turf_launch_collision(T)
+
+
 /obj/item/weapon/melee/twohanded/yautja/glaive
 	name = "war glaive"
 	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon."

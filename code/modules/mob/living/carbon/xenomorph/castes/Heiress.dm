@@ -2,10 +2,10 @@
 	caste_type = XENO_CASTE_HEIRESS
 	tier = 0
 
-	melee_damage_lower = XENO_DAMAGE_TIER_3
-	melee_damage_upper = XENO_DAMAGE_TIER_5
+	melee_damage_lower = XENO_DAMAGE_TIER_2
+	melee_damage_upper = XENO_DAMAGE_TIER_4
 	max_health = XENO_HEALTH_TIER_12
-	plasma_gain = XENO_PLASMA_GAIN_TIER_7
+	plasma_gain = XENO_PLASMA_GAIN_TIER_8
 	plasma_max = XENO_PLASMA_TIER_7
 	crystal_max = XENO_CRYSTAL_MEDIUM
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_8
@@ -14,6 +14,7 @@
 	speed = XENO_SPEED_TIER_3 //human in light armor off weeds
 
 	build_time_mult = BUILD_TIME_MULT_BUILDER
+	max_build_dist = 1
 
 	is_intelligent = 1
 	evolution_allowed = TRUE
@@ -35,7 +36,7 @@
 	tackle_max = 5
 	tackle_chance = 45
 
-	aura_strength = 2.5 //Weaker prae, better hivey
+	aura_strength = 3 //Weaker prae, better hivey
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 
@@ -63,7 +64,8 @@
 	crystal_max = XENO_CRYSTAL_MEDIUM
 	crystal_stored = XENO_CRYSTAL_MEDIUM
 	small_explosives_stun = FALSE
-	pull_speed = 4.5
+	pull_speed = 1.5
+	recovery_constant = 2
 
 	icon_xenonid = 'icons/mob/xenonids/queen.dmi' //I don't wanna draw that too, as backup - normal
 
@@ -146,7 +148,7 @@
 	ability_name = "Fling"
 	macro_path = /datum/action/xeno_action/verb/verb_fling
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 75
+	xeno_cooldown = 80
 
 	// Configurables
 	fling_distance = 3
@@ -270,10 +272,6 @@
 	knockdown = FALSE
 	slash = FALSE
 	freeze_self = FALSE
-
-	var/buff_duration = 12
-	var/damage = 40
-	var/shield_regen_threshold = 2
 
 	var/activated_once = FALSE
 	var/time_until_timeout = 40
