@@ -14,6 +14,8 @@
 	/// The history of all atoms that were hovered over while the mouse was depressed
 	var/list/mouse_trace_history
 	var/list/lmb_last_mousedown_mods
+	//Where is our mouse?
+	var/list/mouse_params
 
 /client/MouseDown(var/atom/A, var/turf/T, var/skin_ctl, var/params)
 	ignore_next_click = FALSE

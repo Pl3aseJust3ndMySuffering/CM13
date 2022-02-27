@@ -4,7 +4,10 @@
 	if(client.prefs?.hide_statusbar){\
 		return;\
 	}\
-	winset(client, "atom_name", "text=\"[name]\"");\
+	client.mouse_params = params;\
+	if(!istype(src,/turf/open)){\
+		winset(client, "atom_name", "text=\"[name]\"");\
+	}\
 };\
 ##type/MouseExited(location, control, params){\
 	var/client/client = usr.client;\
@@ -29,5 +32,5 @@ SHOW_ON_STATUSBAR(/obj/screen/xenonightvision)
 SHOW_ON_STATUSBAR(/obj/screen/toggle_inv)
 SHOW_ON_STATUSBAR(/obj/vehicle)
 SHOW_ON_STATUSBAR(/turf/closed)
-
+SHOW_ON_STATUSBAR(/turf/open)
 #undef SHOW_ON_STATUSBAR
